@@ -9,7 +9,7 @@ adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 
 ircsock.connect((server, 6667))
-irc.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " + botnick + " +\n","UTF-8"))
+irc.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " + botnick + " \n","UTF-8"))
 ircsock.send(bytes("NICK "+ botnick +"\n", "UTF-8"))
 
 def joinchan(chan):
