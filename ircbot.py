@@ -3,7 +3,7 @@ import socket
 ircsock = socket.socket(socket.AF_INET, socket.SOCK.STREAM)
 
 server = "irc.snoonet.org"
-channel = "##bot-testing" 
+channel = "##arctantest" 
 botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
