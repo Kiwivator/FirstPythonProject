@@ -1,6 +1,6 @@
 #!/usr/binn/python3
 import socket
-ircsock = socket.socket(socket.AF_INET, socket.SOCK.STREAM)
+ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
 channel = "##arctantest" 
