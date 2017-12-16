@@ -55,6 +55,7 @@ def main():
 						ircsock.send(bytes("QUIT \n", "UTF-8"))	
 						return
 
-				else: if ircmsg.find("PING :") != -1:
-					ping()
+				else:
+					if ircmsg.find("PING :") != -1:
+						ping()
 main()
