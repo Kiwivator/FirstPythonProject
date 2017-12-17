@@ -21,8 +21,8 @@ def joinchan(chan):
 		print(ircmsg)
 
 
-def ping(ping_code):
-	ircsock.send(bytes("PONG " + ping_code + "\r\n", "UTF-8"))
+# def ping(ping_code):
+	# ircsock.send(bytes("PONG " + ping_code + "\r\n", "UTF-8"))
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
@@ -56,4 +56,4 @@ if __name__ == '__main__':
 
 				else:
 					if ircmsg.find("PING :") != -1:
-						ping(ping_code)
+						ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
