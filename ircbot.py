@@ -12,8 +12,8 @@ ircsock.connect((server, 6667))
 ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "\n", "UTF-8"))
 ircsock.send(bytes("NICK "+ botnick +"\n", "UTF-8"))
 
-def joinchan(channel):
-	ircsock.send(bytes("JOIN "+ channel +"\n", "UTF-8"))
+def joinchan(chan):
+	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
 	ircmsg = ""
 	while ircmsg.find("End of /NAMES list.") == -1:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
