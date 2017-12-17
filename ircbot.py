@@ -34,7 +34,7 @@ if __name__ == '__main__':
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 		
-		msgcode = ircmsg.split[0]
+		msgcode = ircmsg.split()[0]
 
 		if msgcode == "PRIVMSG":
 			name = ircmsg.split('!',1)[0][1:]
