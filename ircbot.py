@@ -20,11 +20,6 @@ def joinchan(chan):
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 
-
-#old ping message (to delete when bot is working fine)
-		# def ping(ping_code):
-	# ircsock.send(bytes("PONG " + ping_code + "\r\n", "UTF-8"))
-
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 
