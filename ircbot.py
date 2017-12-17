@@ -31,7 +31,7 @@ if __name__ == '__main__':
 		
 		msgcode = ircmsg.split()[0]
 
-		if ircmsg == "001":
+		if msgcode == "001":
 			joinchan(channel)
 			
 		joinchan(channel)
