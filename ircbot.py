@@ -12,8 +12,8 @@ ircsock.connect((server, 6667))
 ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "\n", "UTF-8"))
 ircsock.send(bytes("NICK "+ botnick +"\n", "UTF-8"))
 
-def joinchan(chan):
-	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
+def joinchan(channel):
+	ircsock.send(bytes("JOIN "+ channel +"\n", "UTF-8"))
 	ircmsg = ""
 	while ircmsg.find("End of /NAMES list.") == -1:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
@@ -24,6 +24,7 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 
 if __name__ == '__main__':
+	joinchan(channel)
 	while True:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
 		ircmsg = ircmsg.strip('\n\r')
