@@ -23,7 +23,6 @@ if __name__ == '__main__':
 	ircsock.connect((server, 6667))
 	ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "\n", "UTF-8"))
 	ircsock.send(bytes("NICK "+ botnick +"\n", "UTF-8"))
-	joinchan(channel)
 	
 	while True:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
@@ -34,6 +33,8 @@ if __name__ == '__main__':
 
 		if ircmsg == "001":
 			joinchan(channel)
+			
+		joinchan(channel)
 		
 		if msgcode == "PRIVMSG":
 			name = ircmsg.split('!',1)[0][1:]
