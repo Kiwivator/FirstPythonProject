@@ -10,11 +10,11 @@ exitcode = "bye " + botnick
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
-	ircmsg = ""
-	while ircmsg.find("End of message of the day.") == -1:
-		ircmsg = ircsock.recv(2048).decode("UTF-8")
-		ircmsg = ircmsg.strip('\n\r')
-		print(ircmsg)
+	#ircmsg = ""
+	#while ircmsg.find("End of message of the day.") == -1:
+		#ircmsg = ircsock.recv(2048).decode("UTF-8")
+		#ircmsg = ircmsg.strip('\n\r')
+		#print(ircmsg)
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
