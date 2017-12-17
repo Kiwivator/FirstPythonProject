@@ -26,6 +26,7 @@ if __name__ == '__main__':
 	ircmsg = ""
 	if ircmsg == "001":
 		joinchan(channel)
+	joinchan(channel)
 		
 	while True:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
