@@ -24,9 +24,7 @@ if __name__ == '__main__':
 	ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "\n", "UTF-8"))
 	ircsock.send(bytes("NICK "+ botnick +"\n", "UTF-8"))
 	ircmsg = ""
-	if ircmsg.find("001") == -1:
-		ircmsg = ircsock.recv(2048).decode("UTF-8")
-		ircmsg = ircmsg.strip('\n\r')
+	if ircmsg == "001":
 		joinchan(channel)
 		
 	while True:
