@@ -57,4 +57,4 @@ if __name__ == '__main__':
 						sendmsg("As you wish. :'(")
 						ircsock.send(bytes("QUIT \n", "UTF-8"))	
 			elif msgcode == "PING":
-					ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
+				ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
