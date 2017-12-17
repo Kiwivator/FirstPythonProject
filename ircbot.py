@@ -53,7 +53,6 @@ if __name__ == '__main__':
 					if name.lower() == adminname.lower() and message.rstrup() == exitcode:
 						sendmsg("As you wish. :'(")
 						ircsock.send(bytes("QUIT \n", "UTF-8"))	
-						return
 
 				else:
 					if ircmsg.find("PING :") != -1:
