@@ -21,7 +21,8 @@ def joinchan(chan):
 		print(ircmsg)
 
 
-# def ping(ping_code):
+#old ping message (to delete when bot is working fine)
+		# def ping(ping_code):
 	# ircsock.send(bytes("PONG " + ping_code + "\r\n", "UTF-8"))
 
 def sendmsg(msg, target=channel):
@@ -34,10 +35,8 @@ if __name__ == '__main__':
 		print(ircmsg)
 		
 		msgcode = ircmsg.split[0]
-		if msgcode == "PRIVMSG": ~
-		elif msgcode == "PING": ~
 
-		if ircmsg.find("PRIVMSG") != -1:
+		if msgcode == "PRIVMSG":
 			name = ircmsg.split('!',1)[0][1:]
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 
@@ -57,6 +56,5 @@ if __name__ == '__main__':
 					if name.lower() == adminname.lower() and message.rstrup() == exitcode:
 						sendmsg("As you wish. :'(")
 						ircsock.send(bytes("QUIT \n", "UTF-8"))	
-			else:
-				if ircmsg.find("PING :") != -1:
+			elif msgcode == "PING":
 					ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
