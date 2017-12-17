@@ -20,6 +20,7 @@ def joinchan(chan):
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 
+
 def ping():
 	ircsock.send(bytes("PONG :pingis\n", "UTF-8"))
 
@@ -28,6 +29,8 @@ def sendmsg(msg, target=channel):
 
 if __name__ == '__main__':
 	joinchan(channel)
+	while ircmsg.find("001") ==-1:
+		joinchan(channel)
 	while 1:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
 		ircmsg = ircmsg.strip('\n\r')
