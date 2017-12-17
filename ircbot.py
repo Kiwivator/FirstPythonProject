@@ -29,7 +29,7 @@ def sendmsg(msg, target=channel):
 
 if __name__ == '__main__':
 	joinchan(channel)
-	while ircmsg.find("001") ==-1:
+	while ircmsg.find("001") == -1:
 		joinchan(channel)
 	while 1:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
