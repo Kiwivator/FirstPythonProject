@@ -28,10 +28,7 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 
 if __name__ == '__main__':
-	joinchan(channel)
-	while ircmsg.find("001") == -1:
-		joinchan(channel)
-	while 1:
+	while True:
 		ircmsg = ircsock.recv(2048).decode("UTF-8")
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
