@@ -52,7 +52,7 @@ if __name__ == '__main__':
 					else:
 						target = name
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
-				sendmsg(message, target)
+					sendmsg(message, target)
 
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
