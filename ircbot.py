@@ -30,13 +30,14 @@ if __name__ == '__main__':
 		print(ircmsg)
 		
 		msgcode = ircmsg.split()[0]
+		msgcodet = ircmsg.split()[1]
 
 		if msgcode == "001":
 			joinchan(channel)
 			
 		joinchan(channel)
 		
-		if ircmsg.split()[1]  == "PRIVMSG":
+		if msgcodet == "PRIVMSG":
 			name = ircmsg.split('!',1)[0][1:]
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 
