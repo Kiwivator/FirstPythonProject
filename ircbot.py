@@ -54,8 +54,8 @@ if __name__ == '__main__':
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
 						sendmsg(message, target)
 
-					if name.lower() == adminname.lower() and message.rstrip() == exitcode:
-						sendmsg("As you wish. :'(")
-						ircsock.send(bytes("QUIT \n", "UTF-8"))	
+				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
+					sendmsg("As you wish. :'(")
+					ircsock.send(bytes("QUIT \n", "UTF-8"))	
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
