@@ -52,11 +52,8 @@ if __name__ == '__main__':
 					else:
 						target = name
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
-					try:
-						sendmsg(message, target)
-					except IndexError:
-    						sendmsg("Error. Please enter a nickname and message.")
-
+					sendmsg(message, target)
+					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))	
