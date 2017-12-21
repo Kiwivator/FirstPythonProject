@@ -55,7 +55,7 @@ if __name__ == '__main__':
 					try:
 						sendmsg(message, target)
 					except IndexError:
-    						gotdata = 'Error. Please enter a nickname and message.'
+    						sendmsg("Error. Please enter a nickname and message. :'(")
 
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
