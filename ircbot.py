@@ -52,7 +52,10 @@ if __name__ == '__main__':
 					else:
 						target = name
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
-					sendmsg(message, target)
+					try:
+						sendmsg(message, target)
+					except IndexError:
+    						gotdata = 'Error. Please enter a nickname and message.'
 
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
