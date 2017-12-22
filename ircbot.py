@@ -46,7 +46,8 @@ if __name__ == '__main__':
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
 					if len(message[1]) < 1:
-						sendmsg("Error.")
+						message = "Error. "
+						target = "Unable to process command."
 					target = message.split(' ', 1)[1]
 					if target.find(' ') != -1:
 						message = target.split(' ', 1)[1]
