@@ -32,33 +32,35 @@ if __name__ == '__main__':
 		msgcode = ircmsg.split()[0]
 		msgcodet = ircmsg.split()[1]
 
-		if msgcode == "001":
+		if msgcode == "001": #code that snoonet sends out when ready for join command
 			joinchan(channel)
 			
-		joinchan(channel)
+		joinchan(channel) #needs a second join command to connect to channel successfully
 		
-		if msgcodet == "PRIVMSG":
+		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:]
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 
-			if len(name) < 22:
+			if len(name) < 22: #username limit
 				if message.find('Hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
-				if message[:5].find('.tell') != -1:
-					target = message.split(' ', 1)[1]
+				if message[:5].find('.tell') != -1: #reading first five characters of message
+					try:
+						target = message.split(' ', 1)[1]
+					except IndexError:
+						sendmsg("Error.")
 					if target.find(' ') != -1:
 						message = target.split(' ', 1)[1]
 						target = target.split(' ')[0]
 					else:
 						target = name
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
-				try:
+				
 					sendmsg(message, target)
-				except IndexError:
-					sendmsg("Error.")
+				
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))	
 		elif msgcode == "PING":
-			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8"))
+			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
