@@ -48,7 +48,8 @@ if __name__ == '__main__':
 					if len(message[1]) < 1:
 						message = "Error. "
 						target = "Unable to process command."
-					target = message.split(' ', 1)[1]
+					else:
+						target = message.split(' ', 1)[1]
 					if target.find(' ') != -1:
 						message = target.split(' ', 1)[1]
 						target = target.split(' ')[0]
