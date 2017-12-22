@@ -45,6 +45,7 @@ if __name__ == '__main__':
 				if message.find('Hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
+					print message[1]
 					if len(message[1]) < 1:
 						message = "Error. "
 						target = "Unable to process command."
@@ -57,7 +58,7 @@ if __name__ == '__main__':
 						target = name
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
 				
-				sendmsg(message, target)
+					sendmsg(message, target)
 				
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
