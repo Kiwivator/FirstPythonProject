@@ -45,7 +45,7 @@ if __name__ == '__main__':
 				if message.find('Hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
-					if len(messsage.split(' ', 1)[1]) < 1:
+					if len(messsage.split[1]) < 1:
 						sendmsg("Error.")
 					target = message.split(' ', 1)[1]
 					if target.find(' ') != -1:
