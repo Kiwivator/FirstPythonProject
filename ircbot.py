@@ -45,7 +45,7 @@ if __name__ == '__main__':
 				if message.find('Hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
-				try:	
+			try:	
 					target = message.split(' ', 1)[1]
 					if target.find(' ') != -1:
 						message = target.split(' ', 1)[1]
@@ -55,7 +55,7 @@ if __name__ == '__main__':
 						message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
-				except IndexError:
+			except IndexError:
 					sendmsg("Error.")
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
