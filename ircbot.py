@@ -44,11 +44,10 @@ if __name__ == '__main__':
 			if len(name) < 22: #username limit
 				if message.find('Hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
-				if message[:5].find('.tell') != -1: #reading first five characters of message
-					try:
-						target = message.split(' ', 1)[1]
-					except IndexError:
+				if message[:5].find('.tell') != -1:
+					if len(messsage.split(' ', 1)[1]) > 1:
 						sendmsg("Error.")
+					target = message.split(' ', 1)[1]
 					if target.find(' ') != -1:
 						message = target.split(' ', 1)[1]
 						target = target.split(' ')[0]
