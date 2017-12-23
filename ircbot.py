@@ -67,5 +67,5 @@ if __name__ == '__main__':
 					sock.close()
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
-			print("Sent PONG ", ircmsg.split()[1]
+			print("Sent PONG " + ircmsg.split()[1])
 			      
