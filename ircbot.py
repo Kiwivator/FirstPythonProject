@@ -48,7 +48,7 @@ if __name__ == '__main__':
 					print(message)
 					print (len(message))
 					if len(message) == 5:
-						message = "Error. "
+						message = "Please enter the name of a target and message. "
 						target = name
 							
 					else:
