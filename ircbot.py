@@ -64,7 +64,7 @@ if __name__ == '__main__':
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
-					ircsock.close()
+					ircsock.close() #broken
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
 			print("Sent PONG " + ircmsg.split()[1])
