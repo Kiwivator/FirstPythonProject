@@ -46,7 +46,7 @@ if __name__ == '__main__':
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
 					print(message)
-					print len(message)
+					print (len(message))
 					if len(message) == 4:
 						message = "Error. "
 						target = "Please provide a target and message."
