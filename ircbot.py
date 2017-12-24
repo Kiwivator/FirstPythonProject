@@ -48,7 +48,7 @@ if __name__ == '__main__':
 					print(message)
 					if len(message) == 4:
 						message = "Error. "
-						target = "".
+						target = ""
 					else:
 						target = message.split(' ', 1)[1]
 						
