@@ -52,15 +52,15 @@ if __name__ == '__main__':
 						target = "Please provide a target and message."
 						if msgcode.find('401') != -1:
 							
-					else:
-						target = message.split(' ', 1)[1]
-						
-						if target.find(' ') != -1:
-							message = target.split(' ', 1)[1]
-							target = target.split(' ')[0]
 						else:
-							target = name
-							message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
+							target = message.split(' ', 1)[1]
+						
+							if target.find(' ') != -1:
+								message = target.split(' ', 1)[1]
+								target = target.split(' ')[0]
+							else:
+								target = name
+								message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
 				
