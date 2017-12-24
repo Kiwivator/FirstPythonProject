@@ -50,7 +50,7 @@ if __name__ == '__main__':
 					if len(message) == 5:
 						message = "Error. "
 						target = "Please provide a target and message."
-						if msgcode.find('401') != -1:
+						sendmsg(message, target)
 							
 					else:
 						target = message.split(' ', 1)[1]
