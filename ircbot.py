@@ -59,7 +59,7 @@ if __name__ == '__main__':
 							target = target.split(' ')[0]
 						else:
 							target = name
-							message = "Please try again. Message should in the format of '.tell [target] [message]' to work properly."
+							message = "Please try again. Message should be in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
 				
