@@ -52,8 +52,8 @@ if __name__ == '__main__':
 						target = "Please provide a target and message."
 						if msgcode.find('401') != -1:
 							
-						else:
-							target = message.split(' ', 1)[1]
+					else:
+						target = message.split(' ', 1)[1]
 						
 							if target.find(' ') != -1:
 								message = target.split(' ', 1)[1]
