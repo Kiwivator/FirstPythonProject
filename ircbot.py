@@ -50,7 +50,6 @@ if __name__ == '__main__':
 					if len(message) == 5:
 						message = "Error. "
 						target = name
-						sendmsg(message, target)
 							
 					else:
 						target = message.split(' ', 1)[1]
