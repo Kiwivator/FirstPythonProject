@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-page = requests.get("http://dataquestio.github.io/web-scraping-pages/simple.html")
+page = requests.get("http://www.kma.go.kr/weather/forecast/timeseries.jsp?searchType=INTEREST&dongCode=1159068000")
 soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 				if message[:5].find('.tell') != -1:
 					print(message)
 					print (len(message))
-					if len(message) == 5:
+					if len(message) == 5: #TODO: this can probably be refactored with other error message
 						message = "Please enter the name of a target and message. "
 						target = name
 							
