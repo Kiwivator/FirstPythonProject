@@ -8,7 +8,7 @@ page = requests.get("http://www.kma.go.kr/weather/forecast/timeseries.jsp?search
 soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
-channel = "##arctantest" 
+channel = "#korean" 
 botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
@@ -76,7 +76,7 @@ if __name__ == '__main__':
 				if message[:5].find('.temp') != -1:
 					weather = soup.find(id="dfs-panel")
 					currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
-					sendmsg(currenttemp)
+					sendmsg('The current temperature in Seoul is ' + currenttemp)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
