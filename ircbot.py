@@ -59,8 +59,12 @@ if __name__ == '__main__':
 						target = name
 							
 					else:
-						target = message.split(' ', 1)[1]
-						
+						try:
+							target = message.split(' ', 1)[1]
+						except IndexError:
+							message = "Please enter the name of a target and message. "
+							target = name
+							
 						if target.find(' ') != -1:
 							message = target.split(' ', 1)[1]
 							target = target.split(' ')[0]
