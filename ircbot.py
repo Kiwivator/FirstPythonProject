@@ -75,8 +75,8 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
 					weather = soup.find(id="dfs-panel")
-					currenttemp = weather.find_all(class_="now_weather1_right temp1 MB10").gettext()
-					temp = sendmsg(temp)
+					currenttemp = weather.find("class_="now_weather1_right temp1 MB10").gettext()
+					sendmsg(currenttemp)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
