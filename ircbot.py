@@ -73,7 +73,10 @@ if __name__ == '__main__':
 							message = "Please try again. Message should be in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
-				
+				if message[:5].find('.temp') != -1:
+					weather = soup.find(id="dfs-panel")
+					currenttemp = weather.find_all(class_="now_weather1_right temp1 MB10").gettext()
+					temp = sendmsg(temp)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
