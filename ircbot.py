@@ -1,7 +1,7 @@
 #!/usr/binn/python3
 import socket
 import requests
-from beautifulsoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 page = requests.get("http://dataquestio.github.io/web-scraping-pages/simple.html")
