@@ -10,6 +10,7 @@ exitcode = "bye " + botnick
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
+	#Below is the original join code.
 	#ircmsg = ""
 	#while ircmsg.find("End of message of the day.") == -1:
 		#ircmsg = ircsock.recv(2048).decode("UTF-8")
@@ -29,7 +30,7 @@ if __name__ == '__main__':
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 		
-		msgcode = ircmsg.split()[0]
+		msgcode = ircmsg.split()[0] #splitting the first part of RAW irc message
 		msgcodet = ircmsg.split()[1]
 
 		if msgcode == "001": #code that snoonet sends out when ready for join command
@@ -38,11 +39,12 @@ if __name__ == '__main__':
 		joinchan(channel) #needs a second join command to connect to channel successfully
 		
 		if msgcodet == "PRIVMSG": 
-			name = ircmsg.split('!',1)[0][1:]
+			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 
 			if len(name) < 22: #username limit
-				if message.find('Hi ' + botnick) != -1:
+				ircmsg == ircmsg.lower()
+				if message.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				if message[:5].find('.tell') != -1:
 					print(message)
@@ -67,7 +69,7 @@ if __name__ == '__main__':
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
-					ircsock.close() #broken
+					ircsock.close() #broken?
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
 			print("Sent PONG " + ircmsg.split()[1])
