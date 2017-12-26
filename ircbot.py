@@ -77,6 +77,8 @@ if __name__ == '__main__':
 					weather = soup.find(id="dfs-panel")
 					currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 					sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
+					weather = None
+					currenttemp  = None
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
