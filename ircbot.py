@@ -8,7 +8,7 @@ page = requests.get("http://www.kma.go.kr/weather/forecast/timeseries.jsp?search
 soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
-channel = "#korean" 
+channel = "##motitest" 
 botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
