@@ -49,8 +49,8 @@ if __name__ == '__main__':
 			weather = soup.find(id="dfs-panel")
 			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 			currenttemp = currenttemp.strip('\n\r')
-			tempf = weather.select("po_seoul.temp") #trying to get this to work
-			#css_soup.select("dl.dd.temp")
+			tempf = weather.select("dl.dd.temp") #trying to get this to work
+			#css_soup.select("po_seoul.temp")
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
 				if message.find('hi ' + botnick) != -1:
