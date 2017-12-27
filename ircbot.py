@@ -49,6 +49,7 @@ if __name__ == '__main__':
 			weather = soup.find(id="dfs-panel")
 			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 			currenttemp = currenttemp.strip('\n\r')
+			tempf = soup.select(".po_seoul .temp")
 			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
@@ -78,6 +79,7 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
 					sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
+					print ('Homepage temp is ' + tempf + '.')
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
