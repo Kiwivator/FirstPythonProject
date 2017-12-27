@@ -48,7 +48,8 @@ if __name__ == '__main__':
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			weather = soup.find(id="dfs-panel")
 			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
-
+			currenttemp = currenttemp.strip('\n\r')
+			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
 				if message.find('hi ' + botnick) != -1:
