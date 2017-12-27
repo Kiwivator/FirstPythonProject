@@ -49,7 +49,7 @@ if __name__ == '__main__':
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			weather = soup.find(id="weather")
 			seoul = weather.find(class_="po_seoul")
-			currenttemp = seoul.find("temp").get_text()
+			currenttemp = seoul.find(class_="temp").get_text()
 			#findall("dd", class_="temp") #trying to get this to work
 			
 			#weather = soup.find(id="dfs-panel")
