@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-page = requests.get("http://www.weather.go.kr")
+page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 # http://www.weather.go.kr/weather/forecast/timeseries.jsp?searchType=INTEREST&wideCode=1100000000&cityCode=1159000000&dongCode=1159067000
 soup = BeautifulSoup(page.content, 'html.parser')
 
