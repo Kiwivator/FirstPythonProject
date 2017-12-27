@@ -47,7 +47,7 @@ if __name__ == '__main__':
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
-			weather = soup.select("po_seoul.temp")
+			weather = soup.select("po_seoul.temp").get_text()
 			#soup.find_all(class_="temp")
 			#currenttemp = weather.select("po_seoul.temp")
 			#findall("dd", class_="temp") #trying to get this to work
