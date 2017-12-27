@@ -49,7 +49,7 @@ if __name__ == '__main__':
 			weather = soup.find(id="dfs-panel")
 			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 			currenttemp = currenttemp.strip('\n\r')
-			tempf = soup.select(".po_seoul .temp")
+			tempf = soup.select(".po_seoul .temp") #trying to get this to work
 			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
