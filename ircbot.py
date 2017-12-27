@@ -4,7 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-page = requests.get("http://www.weather.go.kr/weather/forecast/timeseries.jsp?searchType=INTEREST&wideCode=1100000000&cityCode=1159000000&dongCode=1159067000")
+page = requests.get("http://www.weather.go.kr")
+# http://www.weather.go.kr/weather/forecast/timeseries.jsp?searchType=INTEREST&wideCode=1100000000&cityCode=1159000000&dongCode=1159067000
 soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
@@ -46,10 +47,14 @@ if __name__ == '__main__':
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
-			weather = soup.find(id="dfs-panel")
-			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
-			currenttemp = currenttemp.strip('\n\r')
-			tempf = weather.findall("dd", class_="temp") #trying to get this to work
+			weather = soup.find(id="weather")
+			currenttemp = weather.select("po_seoul.temp")
+			#findall("dd", class_="temp") #trying to get this to work
+			
+			#weather = soup.find(id="dfs-panel")
+			#currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
+			#currenttemp = currenttemp.strip('\n\r')
+			#tempf = weather.findall("dd", class_="temp") #trying to get this to work
 			#css_soup.select("po_seoul.temp")
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
