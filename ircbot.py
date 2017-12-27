@@ -44,14 +44,14 @@ if __name__ == '__main__':
 			
 		joinchan(channel) #needs a second join command to connect to channel successfully
 		
+		#Weather variables
+		weather = soup.find(id="weather")
+		seoul = weather.find(class_="po_seoul")
+		currenttemp = seoul.find(class_="temp").get_text()
+		
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
-			
-			#Weather variables
-			weather = soup.find(id="weather")
-			seoul = weather.find(class_="po_seoul")
-			currenttemp = seoul.find(class_="temp").get_text()
 			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
