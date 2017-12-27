@@ -46,6 +46,8 @@ if __name__ == '__main__':
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
+			weather = soup.find(id="dfs-panel")
+			currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
@@ -74,8 +76,6 @@ if __name__ == '__main__':
 				
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
-					weather = soup.find(id="dfs-panel")
-					currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
 					sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
