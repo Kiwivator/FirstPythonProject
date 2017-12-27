@@ -47,7 +47,8 @@ if __name__ == '__main__':
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			weather = soup.find(id="weather")
-			currenttemp = weather.find[0](class_="temp").get_text()
+			seoul = weather.find(class_="po_seoul")
+			currenttemp = seoul.find(class_="po_seoul").get_text()
 			currenttemp = currenttemp.strip('\n\r')
 			
 			if len(name) < 22: #username limit
