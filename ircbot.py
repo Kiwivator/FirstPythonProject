@@ -48,7 +48,7 @@ if __name__ == '__main__':
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			weather = soup.find(id="weather")
-			currenttemp = weather.select("po_seoul.temp")
+			#currenttemp = weather.select("po_seoul.temp")
 			#findall("dd", class_="temp") #trying to get this to work
 			
 			#weather = soup.find(id="dfs-panel")
@@ -83,8 +83,8 @@ if __name__ == '__main__':
 				
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
-					sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
-					print (tempf)
+					#sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
+					print (weather)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
