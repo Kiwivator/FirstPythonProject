@@ -79,7 +79,7 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
 					sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
-					print ('Homepage temp is ' + tempf + '.')
+					print ("Homepage temp is " + tempf + ".")
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
