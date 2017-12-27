@@ -50,13 +50,7 @@ if __name__ == '__main__':
 			weather = soup.find(id="weather")
 			seoul = weather.find(class_="po_seoul")
 			currenttemp = seoul.find(class_="temp").get_text()
-			#findall("dd", class_="temp") #trying to get this to work
 			
-			#weather = soup.find(id="dfs-panel")
-			#currenttemp = weather.find(class_="now_weather1_right temp1 MB10").get_text()
-			#currenttemp = currenttemp.strip('\n\r')
-			#tempf = weather.findall("dd", class_="temp") #trying to get this to work
-			#css_soup.select("po_seoul.temp")
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
 				if message.find('hi ' + botnick) != -1:
@@ -85,7 +79,6 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				if message[:5].find('.temp') != -1:
 					#sendmsg('The current temperature in Seoul is ' + currenttemp + '.')
-					print (weather)
 					print (currenttemp)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
