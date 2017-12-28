@@ -25,6 +25,10 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
+	
+def gettemp()
+	sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
+	print (currenttemp)
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -82,6 +86,9 @@ if __name__ == '__main__':
 				if message[:5].find('.temp') != -1:
 					sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
 					print (currenttemp)
+				
+				if message[:5].find('.test') != -1:	
+					gettemp()
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
