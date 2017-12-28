@@ -9,7 +9,7 @@ page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
-channel = "##arctantest" 
+channel = "##motitest" 
 botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
