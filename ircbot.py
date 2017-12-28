@@ -83,12 +83,9 @@ if __name__ == '__main__':
 							message = "Please try again. Message should be in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
-				if message[:5].find('.temp') != -1:
-					sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
-					print (currenttemp)
 				
-				if message[:5].find('.test') != -1:	
-					gettemp(currenttemp)
+				if message[:5].find('.temp') != -1:
+					gettemp(currenttemp)					
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
