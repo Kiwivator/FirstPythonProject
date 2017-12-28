@@ -26,7 +26,7 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def gettemp()
+def gettemp(currenttemp)
 	sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
 	print (currenttemp)
 
