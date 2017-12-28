@@ -88,7 +88,7 @@ if __name__ == '__main__':
 					print (currenttemp)
 				
 				if message[:5].find('.test') != -1:	
-					gettemp()
+					gettemp(currenttemp)
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
