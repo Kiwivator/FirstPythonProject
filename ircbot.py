@@ -23,7 +23,7 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def gettemp(currenttemp):
+def gettemp():
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				
 				if message[:5].find('.temp') != -1:
-					gettemp(currenttemp)					
+					gettemp()					
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
