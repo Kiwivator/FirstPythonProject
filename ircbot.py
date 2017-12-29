@@ -53,6 +53,8 @@ if __name__ == '__main__':
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
+			source = ircmsg.split('PRIVMSG',1)[0].split(':',1)[0]
+			print source
 			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
