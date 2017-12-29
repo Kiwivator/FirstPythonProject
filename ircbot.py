@@ -58,6 +58,10 @@ if __name__ == '__main__':
 				ircmsg == ircmsg.lower()
 				if message.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
+				
+				if name == "Botivatortest":
+					sendmsg(message, "MotivatorAFK")
+				
 				if message[:5].find('.tell') != -1:
 					print(message)
 					print (len(message))
