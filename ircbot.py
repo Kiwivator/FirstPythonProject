@@ -61,7 +61,7 @@ if __name__ == '__main__':
 				if message.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				
-				if name == "Botivatortest":
+				if source == "Botivatortest":
 					sendmsg(message, "MotivatorAFK")
 				
 				if message[:5].find('.tell') != -1:
