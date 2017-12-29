@@ -4,13 +4,10 @@ import requests
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
-# http://www.weather.go.kr/weather/forecast/timeseries.jsp?searchType=INTEREST&wideCode=1100000000&cityCode=1159000000&dongCode=1159067000
-soup = BeautifulSoup(page.content, 'html.parser')
 
 server = "irc.snoonet.org"
-channel = "##Motitest" 
-botnick = "BotivatorTest"
+channel = "##motitest" 
+botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 
@@ -27,6 +24,11 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
 def gettemp(currenttemp):
+	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
+	soup = BeautifulSoup(page.content, 'html.parser')
+	weather = soup.find(id="weather")
+	seoul = weather.find(class_="po_seoul")
+	currenttemp = seoul.find(class_="temp").get_text()
 	sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
 	print (currenttemp)
 
@@ -47,11 +49,6 @@ if __name__ == '__main__':
 			joinchan(channel)
 			
 		joinchan(channel) #needs a second join command to connect to channel successfully
-		
-		#Weather variables
-		weather = soup.find(id="weather")
-		seoul = weather.find(class_="po_seoul")
-		currenttemp = seoul.find(class_="temp").get_text()
 		
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
@@ -94,4 +91,3 @@ if __name__ == '__main__':
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
 			print("Sent PONG " + ircmsg.split()[1])
-			      
