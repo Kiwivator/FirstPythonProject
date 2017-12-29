@@ -31,6 +31,7 @@ def gettemp(currenttemp):
 	currenttemp = seoul.find(class_="temp").get_text()
 	sendmsg('The current temperature in Seoul is ' + currenttemp + '°c.')
 	print (currenttemp)
+	del currenttemp
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
