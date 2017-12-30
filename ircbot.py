@@ -33,6 +33,9 @@ def gettemp():
 	currenttempf = (currenttemp * 1.8) + 32
 	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
 	print (str(currenttemp) + "/" + str(currenttempf))
+	
+def gettamp(city):
+	sendmsg(city)
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -90,7 +93,19 @@ if __name__ == '__main__':
 					sendmsg(message, target)
 				
 				if message[:5].find('.temp') != -1:
-					gettemp()					
+					gettemp()
+					
+				if message[:5].find('.tamp') != -1:
+					try:
+						city = message.split(' ', 1)[1]
+						print (city)
+						gettamp(city)
+						
+					except IndexError:
+							message = "Please enter .temp and the name of a city."
+							target = name
+							sendmsg(message, target)
+									
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
