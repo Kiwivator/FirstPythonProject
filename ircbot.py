@@ -50,7 +50,7 @@ def gettemp(city):
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
 		
-def printtemp(currenttemp)
+def printtemp(currenttemp):
 	currenttemp = float(currenttemp)
 	currenttempf = (currenttemp * 1.8) + 32
 	currenttempf = float(currenttempf)
