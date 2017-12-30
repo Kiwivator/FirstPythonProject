@@ -32,7 +32,7 @@ def gettemp():
 	currenttemp = float(currenttemp)
 	currenttempf = (currenttemp * 1.8) + 32
 	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°c (' + str(currenttempf) + ').')
-	print (currenttemp + "/" + currenttempf)
+	print (str(currenttemp) + "/" + str(currenttempf))
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
