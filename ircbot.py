@@ -43,7 +43,7 @@ def gettamp(city):
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
 	print (weather)
-	citytemp = weather.find(string=cityi)
+	citytemp = weather.find(class_=cityi)
 	print("Temp result = " + str(citytemp))
 
 if __name__ == '__main__':
