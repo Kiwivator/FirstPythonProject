@@ -38,6 +38,7 @@ def gettamp(city):
 	city = city.lower()
 	index = "po_"
 	cityi = index + city
+	print (cityi)
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
