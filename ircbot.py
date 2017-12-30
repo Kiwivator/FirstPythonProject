@@ -23,7 +23,7 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def gettemp():
+#def gettemp():
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
@@ -34,7 +34,7 @@ def gettemp():
 	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
 	print (str(currenttemp) + "/" + str(currenttempf))
 	
-def gettamp(city):
+def gettemp(city):
 	city = city.lower()
 	index = "po_"
 	cityi = index + city
@@ -42,7 +42,6 @@ def gettamp(city):
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
-	print (weather)
 	citytemp = weather.find(class_=cityi)
 	currenttemp = citytemp.find(class_="temp").get_text()
 	currenttemp = float(currenttemp)
@@ -105,11 +104,8 @@ if __name__ == '__main__':
 							message = "Please try again. Message should be in the format of '.tell [target] [message]' to work properly."
 				
 					sendmsg(message, target)
-				
-				if message[:5].find('.temp') != -1:
-					gettemp()
 					
-				if message[:5].find('.tamp') != -1:
+				if message[:5].find('.temp') != -1:
 					try:
 						city = message.split(' ', 1)[1]
 						print (city)
