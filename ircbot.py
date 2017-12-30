@@ -38,10 +38,10 @@ def gettamp(city):
 	city = city.lower()
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
-	weather = soup.find_all(id="weather")
+	weather = soup.find(id="weather")
 	print (weather)
-	#citytemp = weather.find(string=city)
-	#print("Temp result = " + citytemp)
+	citytemp = weather.find(string=city)
+	print("Temp result = " + citytemp)
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
