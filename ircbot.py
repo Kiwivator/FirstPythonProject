@@ -43,10 +43,7 @@ def gettemp(city):
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
 	citytemp = weather.find(class_=cityi)
-	try:
-		currenttemp = citytemp.find(class_="temp").get_text()
-	except:
-		pass
+	currenttemp = citytemp.find(class_="temp").get_text()
 	currenttemp = float(currenttemp)
 	currenttempf = (currenttemp * 1.8) + 32
 	city = city.capitalize()
