@@ -35,14 +35,6 @@ def sendmsg(msg, target=channel):
 	#print (str(currenttemp) + "/" + str(currenttempf))
 	
 def gettemp(city):
-	def printtemp(currenttemp):
-		currenttemp = float(currenttemp)
-		currenttempf = (currenttemp * 1.8) + 32
-		currenttempf = float(currenttempf)
-		city = city.capitalize()
-		sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
-		print (str(currenttemp) + "/" + str(currenttempf))
-	
 	city = city.lower()
 	index = "po_"
 	cityi = index + city
@@ -53,11 +45,17 @@ def gettemp(city):
 	citytemp = weather.find(class_=cityi)
 	try:
 		currenttemp = citytemp.find(class_="temp").get_text()
-		printtemp(currenttemp)
+		currenttemp = float(currenttemp)
+		currenttempf = (currenttemp * 1.8) + 32
+		currenttempf = float(currenttempf)
+		city = city.capitalize()
+		sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
+		print (str(currenttemp) + "/" + str(currenttempf))
+	
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
-		
+	
 
 
 if __name__ == '__main__':
