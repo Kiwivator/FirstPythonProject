@@ -115,7 +115,7 @@ if __name__ == '__main__':
 						sendmsg(message, source)			
 
 					
-				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
+				if host == namehost and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
 					ircsock.close() #broken?
