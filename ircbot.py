@@ -35,7 +35,12 @@ def gettemp():
 	print (str(currenttemp) + "/" + str(currenttempf))
 	
 def gettamp(city):
-	sendmsg(city)
+	city = city.lower()
+	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
+	soup = BeautifulSoup(page.content, 'html.parser')
+	weather = soup.find(id="weather")
+	citytemp = weather.find(city)
+	print(citytemp)
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
