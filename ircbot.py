@@ -36,12 +36,12 @@ def sendmsg(msg, target=channel):
 	
 def gettemp(city):
 	def printtemp(currenttemp):
-	currenttemp = float(currenttemp)
-	currenttempf = (currenttemp * 1.8) + 32
-	currenttempf = float(currenttempf)
-	city = city.capitalize()
-	sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
-	print (str(currenttemp) + "/" + str(currenttempf))
+		currenttemp = float(currenttemp)
+		currenttempf = (currenttemp * 1.8) + 32
+		currenttempf = float(currenttempf)
+		city = city.capitalize()
+		sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
+		print (str(currenttemp) + "/" + str(currenttempf))
 	
 	city = city.lower()
 	index = "po_"
