@@ -38,7 +38,7 @@ def gettamp(city):
 	city = city.lower()
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
-	weather = soup.find(id="weather")
+	weather = soup.find_all(id="weather")
 	citytemp = weather.find(string=city)
 	print(citytemp)
 
