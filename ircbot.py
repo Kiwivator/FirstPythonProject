@@ -102,9 +102,9 @@ if __name__ == '__main__':
 						gettamp(city)
 						
 					except IndexError:
-							message = "Please enter .temp and the name of a city."
-							target = name
-							sendmsg(message, target)
+						message = "Please enter .temp and the name of a city."
+						target = name
+						sendmsg(message, source)
 									
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
