@@ -70,6 +70,7 @@ if __name__ == '__main__':
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			source = ircmsg.split('PRIVMSG ',1)[1].split(':',1)[0]
 			print (source)
+			print (namehost)
 			
 			if len(name) < 22: #username limit
 				ircmsg == ircmsg.lower()
