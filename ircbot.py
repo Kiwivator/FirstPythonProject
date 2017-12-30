@@ -77,7 +77,7 @@ if __name__ == '__main__':
 				if source == botnick:
 					sendmsg(message, "MotivatorAFK")
 				
-				if message[:5].find('.tell') != -1:
+				if name.lower() == adminname.lower() and message[:5].find('.tell') != -1:
 					print(message)
 					print (len(message))
 					if len(message) == 5: #TODO: this can probably be refactored with other error message
