@@ -31,7 +31,7 @@ def gettemp():
 	currenttemp = seoul.find(class_="temp").get_text()
 	currenttemp = float(currenttemp)
 	currenttempf = (currenttemp * 1.8) + 32
-	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°c (' + str(currenttempf) + ').')
+	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
 	print (str(currenttemp) + "/" + str(currenttempf))
 
 if __name__ == '__main__':
