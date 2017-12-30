@@ -23,17 +23,6 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-#def gettemp():
-	#page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
-	#soup = BeautifulSoup(page.content, 'html.parser')
-	#weather = soup.find(id="weather")
-	#seoul = weather.find(class_="po_seoul")
-	#currenttemp = seoul.find(class_="temp").get_text()
-	#currenttemp = float(currenttemp)
-	#currenttempf = (currenttemp * 1.8) + 32
-	#sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
-	#print (str(currenttemp) + "/" + str(currenttempf))
-	
 def gettemp(city):
 	city = city.lower()
 	index = "po_"
@@ -55,8 +44,6 @@ def gettemp(city):
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
-	
-
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -122,8 +109,8 @@ if __name__ == '__main__':
 					except IndexError:
 						message = "Please enter .temp and the name of a city."
 						target = name
-						sendmsg(message, source)
-									
+						sendmsg(message, source)			
+
 					
 				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
