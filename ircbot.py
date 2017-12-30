@@ -24,15 +24,15 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
 #def gettemp():
-	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
-	soup = BeautifulSoup(page.content, 'html.parser')
-	weather = soup.find(id="weather")
-	seoul = weather.find(class_="po_seoul")
-	currenttemp = seoul.find(class_="temp").get_text()
-	currenttemp = float(currenttemp)
-	currenttempf = (currenttemp * 1.8) + 32
-	sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
-	print (str(currenttemp) + "/" + str(currenttempf))
+	#page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
+	#soup = BeautifulSoup(page.content, 'html.parser')
+	#weather = soup.find(id="weather")
+	#seoul = weather.find(class_="po_seoul")
+	#currenttemp = seoul.find(class_="temp").get_text()
+	#currenttemp = float(currenttemp)
+	#currenttempf = (currenttemp * 1.8) + 32
+	#sendmsg('The current temperature in Seoul is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
+	#print (str(currenttemp) + "/" + str(currenttempf))
 	
 def gettemp(city):
 	city = city.lower()
