@@ -36,11 +36,13 @@ def gettemp():
 	
 def gettamp(city):
 	city = city.lower()
+	index = "po_"
+	cityi = index + city
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	weather = soup.find(id="weather")
 	print (weather)
-	citytemp = weather.find(string=city)
+	citytemp = weather.find(string=cityi)
 	print("Temp result = " + citytemp)
 
 if __name__ == '__main__':
