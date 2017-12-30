@@ -47,7 +47,6 @@ def gettemp(city):
 	currenttemp = float(currenttemp)
 	currenttempf = (currenttemp * 1.8) + 32
 	currenttempf = float(currenttempf)
-	round(currenttempf, 1)
 	city = city.capitalize()
 	sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
 	print (str(currenttemp) + "/" + str(currenttempf))
