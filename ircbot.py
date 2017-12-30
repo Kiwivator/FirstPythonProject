@@ -10,6 +10,7 @@ channel = "##motitest"
 botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
+host = "user/Motivator"
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
