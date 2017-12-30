@@ -112,7 +112,7 @@ if __name__ == '__main__':
 					try:
 						city = message.split(' ', 1)[1]
 						print (city)
-						gettamp(city)
+						gettemp(city)
 						
 					except IndexError:
 						message = "Please enter .temp and the name of a city."
