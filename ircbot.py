@@ -35,6 +35,14 @@ def sendmsg(msg, target=channel):
 	#print (str(currenttemp) + "/" + str(currenttempf))
 	
 def gettemp(city):
+	def printtemp(currenttemp):
+	currenttemp = float(currenttemp)
+	currenttempf = (currenttemp * 1.8) + 32
+	currenttempf = float(currenttempf)
+	city = city.capitalize()
+	sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
+	print (str(currenttemp) + "/" + str(currenttempf))
+	
 	city = city.lower()
 	index = "po_"
 	cityi = index + city
@@ -50,13 +58,7 @@ def gettemp(city):
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
 		
-def printtemp(currenttemp):
-	currenttemp = float(currenttemp)
-	currenttempf = (currenttemp * 1.8) + 32
-	currenttempf = float(currenttempf)
-	city = city.capitalize()
-	sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
-	print (str(currenttemp) + "/" + str(currenttempf))
+
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
