@@ -29,7 +29,7 @@ def gettemp():
 	weather = soup.find(id="weather")
 	seoul = weather.find(class_="po_seoul")
 	currenttemp = seoul.find(class_="temp").get_text()
-	currenttempc = int(temp[:-1])
+	currenttempc = int(currenttemp[:-1])
 	currenttempf = int(round((9 * currenttempc) / 5 + 32))
 	sendmsg('The current temperature in Seoul is ' + currenttemp + '°c (' + currenttempf + ')')
 	print (currenttemp)
