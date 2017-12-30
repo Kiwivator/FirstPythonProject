@@ -44,7 +44,12 @@ def gettamp(city):
 	weather = soup.find(id="weather")
 	print (weather)
 	citytemp = weather.find(class_=cityi)
-	print("Temp result = " + str(citytemp))
+	currenttemp = citytemp.find(class_="temp").get_text()
+	currenttemp = float(currenttemp)
+	currenttempf = (currenttemp * 1.8) + 32
+	city = city.capitalize()
+	sendmsg('The current temperature in ' + city + ' is ' + str(currenttemp) + '°C (' + str(currenttempf) + '°F).')
+	print (str(currenttemp) + "/" + str(currenttempf))
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
