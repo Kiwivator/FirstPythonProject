@@ -43,7 +43,7 @@ def gettamp(city):
 	weather = soup.find(id="weather")
 	print (weather)
 	citytemp = weather.find(string=cityi)
-	print("Temp result = " + citytemp)
+	print("Temp result = " + str(citytemp))
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
