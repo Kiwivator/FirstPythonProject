@@ -76,6 +76,7 @@ if __name__ == '__main__':
 			
 			if len(name) < 22: #username limit
 				ircmsg = ircmsg.lower()
+				botnick = botnick.lower()
 				message = message.lower()
 				if message.find('hi ' + botnick) != -1:
 					print (message)
