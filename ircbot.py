@@ -45,6 +45,8 @@ def gettemp(city):
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
+		
+
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -74,7 +76,7 @@ if __name__ == '__main__':
 			
 			if len(name) < 22: #username limit
 				ircmsg = ircmsg.lower()
-				if message.find('hi ' + botnick) != -1:
+				if ircmsg.find('hi ' + botnick) != -1:
 					print (message)
 					sendmsg("Hello " + name + "!")
 				
