@@ -73,13 +73,12 @@ if __name__ == '__main__':
 			print (namehost)
 			
 			if len(name) < 22: #username limit
-				message == message.lower()
-				if message.find('hi ' + botnick) != -1:
+				messagetemp == message.lower()
+				if messagetemp.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				
 				if source == botnick:
-					ircmsg = message
-					sendmsg(message, "MotivatorAFK")
+					sendmsg(message, adminname)
 				
 				if host == namehost and message[:5].find('.tell') != -1:
 					print(message)
