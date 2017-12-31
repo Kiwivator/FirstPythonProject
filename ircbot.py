@@ -73,7 +73,7 @@ if __name__ == '__main__':
 			print (namehost)
 			
 			if len(name) < 22: #username limit
-				messagetemp == message.lower()
+				messagetemp = message.lower()
 				if messagetemp.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				
