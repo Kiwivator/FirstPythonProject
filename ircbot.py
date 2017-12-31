@@ -74,7 +74,7 @@ if __name__ == '__main__':
 			
 			if len(name) < 22: #username limit
 				message = message.lower()
-				if messagetemp.find('hi ' + botnick) != -1:
+				if message.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				
 				if source == botnick:
