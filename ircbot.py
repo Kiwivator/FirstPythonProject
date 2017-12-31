@@ -73,7 +73,7 @@ if __name__ == '__main__':
 			print (namehost)
 			
 			if len(name) < 22: #username limit
-				message = message.lower()
+				ircmsg = ircmsg.lower()
 				if message.find('hi ' + botnick) != -1:
 					print (message)
 					sendmsg("Hello " + name + "!")
