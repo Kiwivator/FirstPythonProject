@@ -7,7 +7,7 @@ ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
 channel = "##motitest" 
-botnick = "Botivatortest"
+botnick = "botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
@@ -73,7 +73,7 @@ if __name__ == '__main__':
 			print (namehost)
 			
 			if len(name) < 22: #username limit
-				ircmsg == ircmsg.lower()
+				message == message.lower()
 				if message.find('hi ' + botnick) != -1:
 					sendmsg("Hello " + name + "!")
 				
