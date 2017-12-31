@@ -78,6 +78,7 @@ if __name__ == '__main__':
 					sendmsg("Hello " + name + "!")
 				
 				if source == botnick:
+					ircmsg = message
 					sendmsg(message, "MotivatorAFK")
 				
 				if host == namehost and message[:5].find('.tell') != -1:
