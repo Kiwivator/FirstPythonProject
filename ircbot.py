@@ -27,9 +27,9 @@ def sendmsg(msg, target=channel):
 def gettemp(city):
 	city = city.lower()
 	index = "po_"
-	if city == "daejeon":
-		city = "daejeoun"
 	cityi = index + city
+	if city == "daejeon":
+		cityi = "po_daejeoun"
 	print (cityi)
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
