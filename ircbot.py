@@ -27,7 +27,7 @@ def sendmsg(msg, target=channel):
 def gettemp(city):
 	city = city.lower()
 	index = "po_"
-	if city = "daejeon":
+	if city == "daejeon":
 		city = "daejeoun"
 	cityi = index + city
 	print (cityi)
