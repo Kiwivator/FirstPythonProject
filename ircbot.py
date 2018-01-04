@@ -10,6 +10,7 @@ channel = "#Korean"
 botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
+host = "user/Motivator"
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -44,6 +45,8 @@ def gettemp(city):
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
+		
+
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -65,19 +68,24 @@ if __name__ == '__main__':
 		
 		if msgcodet == "PRIVMSG": 
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
+			namehost = ircmsg.split('@',1)[1].split(' ',1)[0]
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
 			source = ircmsg.split('PRIVMSG ',1)[1].split(':',1)[0]
 			print (source)
+			print (namehost)
 			
 			if len(name) < 22: #username limit
-				ircmsg == ircmsg.lower()
+				ircmsg = ircmsg.lower()
+				botnick = botnick.lower()
+				message = message.lower()
 				if message.find('hi ' + botnick) != -1:
+					print (message)
 					sendmsg("Hello " + name + "!")
 				
 				if source == botnick:
-					sendmsg(message, "MotivatorAFK")
+					sendmsg(message, adminname)
 				
-				if message[:5].find('.tell') != -1:
+				if host == namehost and message[:5].find('.tell') != -1:
 					print(message)
 					print (len(message))
 					if len(message) == 5: #TODO: this can probably be refactored with other error message
@@ -112,7 +120,7 @@ if __name__ == '__main__':
 						sendmsg(message, source)			
 
 					
-				if name.lower() == adminname.lower() and message.rstrip() == exitcode:
+				if host == namehost and message.rstrip() == exitcode:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
 					ircsock.close() #broken?
