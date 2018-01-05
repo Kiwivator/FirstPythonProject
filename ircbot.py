@@ -60,6 +60,7 @@ def yaja():
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
 	if mins == 1:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
+		time.sleep(60)
 	if mins == 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
 	
