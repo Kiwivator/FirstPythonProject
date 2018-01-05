@@ -54,13 +54,14 @@ def yaja():
 	message = "야자타임 will now begin for 5 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
 	mins = 5
-	while mins > 0:
+	while mins > 2:
 		mins = mins - 1
 		time.sleep(60)
-		sendmsg("야자 타임 " + str(mins) + "분 남았습니다")
-
+		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
+	if mins == 1:
+		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
 	if mins == 0:
-		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't well in 반말, it's best to ask their permission first.")
+		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
 	
 
 if __name__ == '__main__':
