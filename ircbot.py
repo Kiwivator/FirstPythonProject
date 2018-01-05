@@ -58,7 +58,7 @@ def yaja():
     		mins = mins - 1
 		time.sleep(60)
 		sendmsg("Yaja timeleft" + mins )
-		
+
 	if mins = 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't well in 반말, it's best to ask their permission first.")
 	
