@@ -55,7 +55,7 @@ def yaja():
 	sendmsg(message, source)
 	mins = 5
 	while mins < 0:
-    	mins = mins - 1
+		mins = mins - 1
 		time.sleep(60)
 		sendmsg("Yaja timeleft" + mins )
 
