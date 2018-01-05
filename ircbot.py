@@ -48,16 +48,16 @@ def gettemp(city):
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
-		
+                
 def yaja():
 	source = channel
 	message = "야자타임 will now begin for 5 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
 	mins = 5
-	while mins < 0:
-    		mins = mins - 1
-		time.sleep(60)
-		sendmsg("Yaja timeleft" + mins )
+		while mins < 0:
+                        mins = mins - 1
+		        time.sleep(60)
+		        sendmsg("Yaja timeleft" + mins )
 
 	if mins = 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't well in 반말, it's best to ask their permission first.")
