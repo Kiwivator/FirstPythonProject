@@ -66,7 +66,9 @@ def yaja():
 		time.sleep(60)
 	if mins == 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
-	
+	# Make OP host list to limit command use
+	# Change to 15 minutes
+	# Make a break command?
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
