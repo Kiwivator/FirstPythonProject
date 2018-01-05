@@ -48,7 +48,7 @@ def gettemp(city):
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
 		
-def yaja(yatime)
+def yaja()
 	source = channel
 	message = "야자타임 will now begin for __ minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
