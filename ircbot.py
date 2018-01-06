@@ -53,7 +53,7 @@ def yaja():
 	source = channel
 	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
-mins = 10
+	mins = 10
 	mins = mins - 1
 	time.sleep(60)
 	while mins > 1:
