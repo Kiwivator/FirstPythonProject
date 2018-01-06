@@ -51,23 +51,25 @@ def gettemp(city):
                 
 def yaja():
 	source = channel
-	message = "야자타임 will now begin for 15 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
+	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
-	mins = 15
-	while mins > 5:
-		time.sleep(300)
-		mins = mins - 5
+mins = 10
+	mins = mins - 1
+	time.sleep(60)
+	while mins > 1:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
-		
-	if mins == 5:
+		time.sleep(60)
+		mins = mins - 1
+	if mins == 1:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
 		mins = mins - 1
-		time.sleep(300)
+		time.sleep(60)
 	if mins == 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
 	# Make OP host list to limit command use
 	# Change to 15 minutes
-	# Make a break command?
+	# Make async so that bot continues to PING/PONG and recognize commands
+	# Make a break/extend command?
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
