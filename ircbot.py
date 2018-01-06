@@ -146,7 +146,7 @@ if __name__ == '__main__':
 					yaja()
 
 					
-				if host == namehost and message == exitcode:
+				if host == namehost and message == "bye " + botnick:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
 					ircsock.close() #broken?
