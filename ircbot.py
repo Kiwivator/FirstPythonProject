@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
 		joinchan(channel)
 		
-		if msgcodet == "PRIVMSG":
+		if msgcode == "PRIVMSG":
 			name = ircmsg.split('!',1)[0][1:] #splitting out name from msgcodet
 			namehost = ircmsg.split('@',1)[1].split(' ',1)[1]
 			message = ircmsg.split('PRIVMSG' ,1)[1].split(':',1)[1]
