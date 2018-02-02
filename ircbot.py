@@ -7,7 +7,7 @@ ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org" # Server
 channel = "##mashlytest" # Channel
-botnick = "Bashly" # Your bots nick
+botnick = "BashlyTest" # Your bots nick
 adminname = "mashly" # Your IRC nickname
 exitcode = "Bye" + botnick
 host = "user/mashly"
@@ -84,6 +84,6 @@ if __name__ == '__main__':
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
 					ircsock.close()
 			
-			elif msgcode == "PING":
-				ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
-				print("Sent PONG " + ircmsg.split()[1])
+		elif msgcode == "PING":
+			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
+			print("Sent PONG " + ircmsg.split()[1])
