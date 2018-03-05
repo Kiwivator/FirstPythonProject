@@ -81,7 +81,10 @@ if __name__ == '__main__':
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 		
-		msgcode = ircmsg.split()[0] #splitting the first part of RAW irc message
+		try:
+			msgcode = ircmsg.split()[0] #splitting the first part of RAW irc message
+		except:
+			pass
 		msgcodet = ircmsg.split()[1]
 
 		if msgcode == "001": #code that snoonet sends out when ready for join command
