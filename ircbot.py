@@ -27,12 +27,13 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
 def roulette():
+	diemsg = "" BANG! You died."
 	count =-1
 	i = random.randint(1, 2)
 	if result == 1:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
 	elif count == 1:
-		ircsock.send(bytes("KICK " + name " BANG! You died." + "\n", "UTF-8"))
+		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
 		count = 6
 	else:
 		ircsock.sendircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
