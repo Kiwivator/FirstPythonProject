@@ -2,6 +2,7 @@
 import socket
 import requests
 import time
+import random
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -30,7 +31,7 @@ def roulette():
 	diemsg = " BANG! You died."
 	count =-1
 	i = random.randint(1, 2)
-	if result == 1:
+	if i == 1:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
 	elif count == 1:
 		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
