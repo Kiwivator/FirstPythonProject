@@ -40,7 +40,6 @@ def roulette():
 		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
 		count = 6
 	else:
-		elif i == 1:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
 	
 def gettemp(city):
