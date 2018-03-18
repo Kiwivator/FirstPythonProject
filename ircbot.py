@@ -27,7 +27,7 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
 def roulette():
-	diemsg = "" BANG! You died."
+	diemsg = " BANG! You died."
 	count =-1
 	i = random.randint(1, 2)
 	if result == 1:
