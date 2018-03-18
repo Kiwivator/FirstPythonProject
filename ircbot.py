@@ -36,7 +36,7 @@ def roulette():
 		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
 		count = 6
 	else:
-		ircsock.sendircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
+		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
 		count = 6
 	
 def gettemp(city):
