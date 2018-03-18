@@ -28,15 +28,15 @@ def sendmsg(msg, target=channel):
 	
 def roulette():
 	count =-1
- 	i = random.randint(1, 2)
- 	if result == 1:
-  		sendmsg('CLICK. You survived. There are 5 chances left.')
+	i = random.randint(1, 2)
+	if result == 1:
+		sendmsg('CLICK. You survived. There are 5 chances left.')
 	elif count == 1:
-   		ircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
-   		count = 6
-  	else:
-   		ircsock.sendircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
-   		count = 6
+		ircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
+		count = 6
+	else:
+		ircsock.sendircsock.send(bytes("KICK " + name " BANG! You died. \n", "UTF-8"))
+		count = 6
 	
 def gettemp(city):
 	city = city.lower()
