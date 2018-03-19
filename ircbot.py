@@ -13,7 +13,8 @@ botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
-global count = 6
+global count
+count = 6
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
