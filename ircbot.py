@@ -13,7 +13,7 @@ botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
-count = 6
+global count = 6
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -33,11 +33,11 @@ def roulette(count):
 	i = random.randint(1, 6)
 	if i == 6:
 		print ("Dead by random number")
-		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
+		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 	if count == 1:
 		print ("Dead by last bullet")
-		ircsock.send(bytes("KICK " + name + diemsg + "\n", "UTF-8"))
+		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 	if i <= count <= 5:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
