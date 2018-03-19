@@ -34,7 +34,7 @@ def roulette():
 		print ("Dead by last bullet")
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
-	i = random.randint(1, 6)
+	i = random.randint(1, count)
 	if i == 6:
 		print ("Dead by random number")
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
