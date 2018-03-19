@@ -13,7 +13,6 @@ botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
-global count
 count = 6
 
 def joinchan(chan):
@@ -29,6 +28,7 @@ def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
 def roulette():
+	global count
 	diemsg = " BANG! You died."
 	if count == 1:
 		print ("Dead by last bullet")
