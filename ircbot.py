@@ -1,6 +1,8 @@
 #!/usr/binn/python3
 import socket
 import requests
+import time
+import random
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -11,6 +13,7 @@ botnick = "Botivator"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
+count = 6
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -24,10 +27,28 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
+def roulette():
+	global count
+	diemsg = " BANG! Bad luck, you died."
+	i = random.randint(1, count)
+	if count == 1:
+		print ("Dead by last bullet")
+		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
+		count = 6
+	elif i == 1:
+		print ("Dead by random number")
+		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
+		count = 6
+	else:
+		count = count - 1
+		sendmsg('CLICK. You survived. There are ' + str(count) + ' chances left.')
+	
 def gettemp(city):
 	city = city.lower()
 	index = "po_"
 	cityi = index + city
+	if city == "daejeon":
+		cityi = "po_daejeoun"
 	print (cityi)
 	page = requests.get("http://www.weather.go.kr/weather/main-now-weather.jsp")
 	soup = BeautifulSoup(page.content, 'html.parser')
@@ -45,8 +66,28 @@ def gettemp(city):
 	except:
 		message = "Sorry, weather for this city isn't available, but may be added later."
 		sendmsg(message, source)
-		
-
+                
+def yaja():
+	source = channel
+	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
+	sendmsg(message, source)
+	mins = 10
+	mins = mins - 1
+	time.sleep(60)
+	while mins > 1:
+		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
+		time.sleep(60)
+		mins = mins - 1
+	if mins == 1:
+		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
+		mins = mins - 1
+		time.sleep(60)
+	if mins == 0:
+		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
+	# Make OP host list to limit command use
+	# Change to 15 minutes
+	# Make async so that bot continues to PING/PONG and recognize commands
+	# Make a break/extend command?
 
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
@@ -58,7 +99,10 @@ if __name__ == '__main__':
 		ircmsg = ircmsg.strip('\n\r')
 		print(ircmsg)
 		
-		msgcode = ircmsg.split()[0] #splitting the first part of RAW irc message
+		try:
+			msgcode = ircmsg.split()[0] #splitting the first part of RAW irc message
+		except:
+			pass
 		msgcodet = ircmsg.split()[1]
 
 		if msgcode == "001": #code that snoonet sends out when ready for join command
@@ -117,10 +161,16 @@ if __name__ == '__main__':
 					except IndexError:
 						message = "Please enter .temp and the name of a city."
 						target = name
-						sendmsg(message, source)			
-
+						sendmsg(message, source)
+						
+				if message[:5].find('.yaja') != -1:
+					#yaja()
+					sendmsg("야자 타임 will be added in the near future.")
 					
-				if host == namehost and message.rstrip() == exitcode:
+				if message[:9].find('.roulette') != -1:
+					roulette()
+					
+				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
 					ircsock.send(bytes("QUIT \n", "UTF-8"))
 					ircsock.close() #broken?
