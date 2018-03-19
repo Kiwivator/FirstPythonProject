@@ -30,18 +30,18 @@ def sendmsg(msg, target=channel):
 	
 def roulette(count):
 	diemsg = " BANG! You died."
-	count = count - 1
 	i = random.randint(1, 6)
 	if i == 6:
 		print ("Dead by random number")
 		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
-	if count == 1:
+	elif count == 1:
 		print ("Dead by last bullet")
 		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
-	if i <= count <= 5:
+	else:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
+		count = count - 1
 	
 def gettemp(city):
 	city = city.lower()
