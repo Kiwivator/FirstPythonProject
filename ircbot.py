@@ -164,7 +164,8 @@ if __name__ == '__main__':
 						sendmsg(message, source)
 						
 				if message[:5].find('.yaja') != -1:
-					yaja()
+					#yaja()
+					sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
 					roulette()
