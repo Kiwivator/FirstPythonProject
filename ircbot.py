@@ -28,16 +28,16 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def roulette(count):
+def roulette():
 	diemsg = " BANG! You died."
 	if count == 1:
 		print ("Dead by last bullet")
-		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
+		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 	i = random.randint(1, 6)
 	if i == 6:
 		print ("Dead by random number")
-		ircsock.send(bytes("KICK " + name + " " + diemsg + "\n", "UTF-8"))
+		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 	else:
 		sendmsg('CLICK. You survived. There are 5 chances left.')
