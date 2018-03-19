@@ -27,7 +27,7 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def roulette():
+def roulette(count):
 	diemsg = " BANG! You died."
 	count = count - 1
 	i = random.randint(1, 6)
@@ -166,7 +166,7 @@ if __name__ == '__main__':
 					yaja()
 					
 				if message[:9].find('.roulette') != -1:
-					roulette()
+					roulette(count)
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
