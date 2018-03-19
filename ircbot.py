@@ -167,7 +167,7 @@ if __name__ == '__main__':
 					yaja()
 					
 				if message[:9].find('.roulette') != -1:
-					roulette(count)
+					roulette()
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
