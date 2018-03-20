@@ -183,7 +183,7 @@ if __name__ == '__main__':
 					#if name == lastshooter:
 					#	sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
 					#	pass
-					if time.time() - oldtime > 59:
+					if time.time() - oldtime < 59:
 						sendmsg("지금 총알이 없습니다. 나중에 다시 해보십시오.")
 					else:
 						roulette(name)
