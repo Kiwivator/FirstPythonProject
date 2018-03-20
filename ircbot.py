@@ -14,6 +14,7 @@ adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
+lastshooter = "None"
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -27,7 +28,7 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def roulette():
+def roulette(name):
 	global count
 	diemsg = " BANG! Bad luck, you died."
 	i = random.randint(1, count)
@@ -40,6 +41,8 @@ def roulette():
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 	else:
+		name = shooter
+		if shooter = 
 		count = count - 1
 		sendmsg('CLICK. You survived. There are ' + str(count) + ' chances left.')
 	
@@ -168,7 +171,12 @@ if __name__ == '__main__':
 					sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
-					roulette()
+					global lastshooter
+					if name == lastshooter:
+						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
+						pass
+					else:
+						roulette()
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
