@@ -40,12 +40,12 @@ def roulette(name):
 		print ("Dead by last bullet")
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
-		oldtime = datetime.datetime.now
+		oldtime = time.time()
 	elif i == 1:
 		print ("Dead by random number")
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
-		oldtime = datetime.datetime.now
+		oldtime = time.time()
 	else:
 		count = count - 1
 		lastshooter = name
