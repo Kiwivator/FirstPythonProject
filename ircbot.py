@@ -37,17 +37,17 @@ def roulette(name):
 	diemsg = " BANG! Bad luck, you died."
 	i = random.randint(1, count)
 	if count == 1:
-		print ("Dead by last bullet")
-		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
-		count = 6
-		oldtime = time.time()
-	elif i == 1:
 		misfire = random.randint(1, 3)
 		if misfire == 3:
 			sendmsg('Misfire! 운이 참 좋으시네요.')
 		else:
-			print ("Dead by random number")
+			print ("Dead by last bullet")
 			ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
+		count = 6
+		oldtime = time.time()
+	elif i == 1:
+		print ("Dead by random number")
+		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 		oldtime = time.time()
 	else:
