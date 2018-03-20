@@ -3,6 +3,7 @@ import socket
 import requests
 import time
 import random
+import datetime
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,6 +16,7 @@ exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
 lastshooter = "None"
+oldtime = time.time()
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -174,6 +176,8 @@ if __name__ == '__main__':
 					if name == lastshooter:
 						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
 						pass
+					#elif time.time() - oldtime > 59:
+   					#print "it's been a minute"
 					else:
 						roulette(name)
 					
