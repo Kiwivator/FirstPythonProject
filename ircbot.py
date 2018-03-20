@@ -14,6 +14,7 @@ adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
+global lastshooter
 lastshooter = "None"
 
 def joinchan(chan):
@@ -42,7 +43,6 @@ def roulette(name):
 		count = 6
 	else:
 		count = count - 1
-		global lastshooter
 		name = lastshooter
 		sendmsg('CLICK. You survived. There are ' + str(count) + ' chances left.')
 	
