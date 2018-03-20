@@ -14,7 +14,6 @@ adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
-global lastshooter
 lastshooter = "None"
 
 def joinchan(chan):
@@ -31,6 +30,7 @@ def sendmsg(msg, target=channel):
 	
 def roulette(name):
 	global count
+	global lastshooter
 	diemsg = " BANG! Bad luck, you died."
 	i = random.randint(1, count)
 	if count == 1:
@@ -43,7 +43,7 @@ def roulette(name):
 		count = 6
 	else:
 		count = count - 1
-		name = lastshooter
+		lastshooter = name
 		sendmsg('CLICK. You survived. There are ' + str(count) + ' chances left.')
 	
 def gettemp(city):
