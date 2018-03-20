@@ -42,8 +42,12 @@ def roulette(name):
 		count = 6
 		oldtime = time.time()
 	elif i == 1:
-		print ("Dead by random number")
-		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
+		misfire = random.randint(1, 3)
+		if misfire == 3:
+			sendmsg('Misfire! 운이 참 좋으시네요.')
+		else:
+			print ("Dead by random number")
+			ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
 		oldtime = time.time()
 	else:
