@@ -175,7 +175,7 @@ if __name__ == '__main__':
 						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
 						pass
 					else:
-						roulette()
+						roulette(name)
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
