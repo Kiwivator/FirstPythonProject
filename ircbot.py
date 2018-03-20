@@ -180,11 +180,11 @@ if __name__ == '__main__':
 					sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
-					#if name == lastshooter:
-					#	sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
-					#	pass
-					if time.time() - oldtime < 59:
-						sendmsg("지금 총알이 없습니다. 나중에 다시 해보십시오.")
+					if name == lastshooter:
+						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
+						pass
+					elif time.time() - oldtime < 59:
+						sendmsg("Please try again later.")
 					else:
 						roulette(name)
 					
