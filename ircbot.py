@@ -3,6 +3,7 @@ import socket
 import requests
 import time
 import random
+import datetime
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -14,6 +15,8 @@ adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
+lastshooter = "None"
+oldtime = time.time()
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -27,20 +30,29 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def roulette():
+def roulette(name):
 	global count
+	global lastshooter
+	global oldtime
 	diemsg = " BANG! Bad luck, you died."
 	i = random.randint(1, count)
 	if count == 1:
-		print ("Dead by last bullet")
-		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
+		misfire = random.randint(1, 3)
+		if misfire == 3:
+			sendmsg('Misfire! 운이 참 좋으시네요.')
+		else:
+			print ("Dead by last bullet")
+			ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
+		oldtime = time.time()
 	elif i == 1:
 		print ("Dead by random number")
 		ircsock.send(bytes("KICK " + " " + channel + " " + name + " " + diemsg + "\n", "UTF-8"))
 		count = 6
+		oldtime = time.time()
 	else:
 		count = count - 1
+		lastshooter = name
 		sendmsg('CLICK. You survived. There are ' + str(count) + ' chances left.')
 	
 def gettemp(city):
@@ -168,7 +180,13 @@ if __name__ == '__main__':
 					sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
-					roulette()
+					if name == lastshooter:
+						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
+						pass
+					elif time.time() - oldtime < 59:
+						sendmsg("Please try again later.")
+					else:
+						roulette(name)
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
