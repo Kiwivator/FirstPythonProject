@@ -85,11 +85,9 @@ def yaja():
 	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
 	mins = 15
-	mins = mins - 1
-	time.sleep(60)
 	while mins > 5:
-		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
 		time.sleep(300)
+		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
 		mins = mins - 5
 	if mins == 5:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
