@@ -82,7 +82,7 @@ def gettemp(city):
                 
 def yaja():
 	source = channel
-	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
+	message = "야자타임 will now begin for 15 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
 	mins = 15
 	while mins > 5:
