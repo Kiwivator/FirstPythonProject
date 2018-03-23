@@ -1,9 +1,10 @@
 #!/usr/binn/python3
-import socket
-import requests
-import time
-import random
 import datetime
+import random
+import requests
+import socket
+import time
+import threading
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -176,8 +177,8 @@ if __name__ == '__main__':
 						sendmsg(message, source)
 						
 				if message[:5].find('.yaja') != -1:
-					#yaja()
-					sendmsg("야자 타임 will be added in the near future.")
+					threading.Thread(target=yaja).start()
+					#sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
 					if name == lastshooter:
