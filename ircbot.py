@@ -1,16 +1,17 @@
 #!/usr/binn/python3
-import socket
-import requests
-import time
-import random
 import datetime
+import random
+import requests
+import socket
+import time
+import threading
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "#Korean" 
-botnick = "Botivator"
+channel = "##motitest" 
+botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
@@ -81,23 +82,25 @@ def gettemp(city):
                 
 def yaja():
 	source = channel
-	message = "야자타임 will now begin for 10 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
+	message = "야자타임 will now begin for 15 minutes. Everyone is free to use 반말 to each other until 야자타임 ends. Have fun and be nice!~"
 	sendmsg(message, source)
-	mins = 10
-	mins = mins - 1
-	time.sleep(60)
-	while mins > 1:
+	mins = 15
+	mins = mins - 5
+	while mins == 10:
+		time.sleep(300)
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
-		time.sleep(60)
-		mins = mins - 1
-	if mins == 1:
+		print(str(mins) + " mins left.")
+		mins = mins - 5
+	if mins == 5:
+		time.sleep(300)
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
-		mins = mins - 1
-		time.sleep(60)
+		print(str(mins) + " mins left.")
+		mins = mins - 5
 	if mins == 0:
+		time.sleep(300)
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
-	# Make OP host list to limit command use
-	# Change to 15 minutes
+	# Change to 15 minutes (warnings at 10,5,1 min left)
+	# Make OP host list to limit command use 
 	# Make async so that bot continues to PING/PONG and recognize commands
 	# Make a break/extend command?
 
@@ -176,8 +179,8 @@ if __name__ == '__main__':
 						sendmsg(message, source)
 						
 				if message[:5].find('.yaja') != -1:
-					#yaja()
-					sendmsg("야자 타임 will be added in the near future.")
+					threading.Thread(target=yaja).start()
+					#sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
 					if name == lastshooter:
