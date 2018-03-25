@@ -89,10 +89,12 @@ def yaja():
 		mins = mins - 5
 		time.sleep(300)
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
+		print(str(mins) + " mins left.")
 	if mins == 5:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
 		mins = mins - 1
 		time.sleep(300)
+		print(str(mins) + " mins left.")
 	if mins == 0:
 		sendmsg("야자 타임이 끝났습니다. Please speak as you would normally. If you'd like to continue speaking with someone you don't know well in 반말, it's best to ask their permission first.")
 	# Change to 15 minutes (warnings at 10,5,1 min left)
