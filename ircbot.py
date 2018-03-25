@@ -87,13 +87,13 @@ def yaja():
 	mins = 15
 	mins = mins - 5
 	while mins == 10:
-		time.sleep(5)
+		time.sleep(30)
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
 		print(str(mins) + " mins left.")
 		mins = mins - 5
 	if mins == 5:
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다. Prepare your 요s.")
-		time.sleep(5)
+		time.sleep(30)
 		print(str(mins) + " mins left.")
 		mins = mins - 5
 	if mins == 0:
