@@ -86,7 +86,7 @@ def yaja():
 	sendmsg(message, source)
 	mins = 15
 	mins = mins - 5
-	while mins > 10:
+	while mins == 10:
 		time.sleep(5)
 		sendmsg("야자 타임 " + str(mins) + "분 남았습니다.")
 		print(str(mins) + " mins left.")
