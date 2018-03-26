@@ -5,6 +5,7 @@ import requests
 import socket
 import time
 import threading
+#import temp
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
