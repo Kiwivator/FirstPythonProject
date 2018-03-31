@@ -2,22 +2,27 @@
 import datetime
 import random
 import requests
+import schedule
 import socket
 import time
 import threading
+#import temp
 from bs4 import BeautifulSoup
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "#Korean" 
-botnick = "Botivator"
+channel = "##motitest" 
+botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
 count = 6
 lastshooter = "None"
 oldtime = time.time()
+hotpot = 0
+todaypot = 0
+todaydate = datetime.date.today()
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -30,7 +35,7 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
-	
+
 def roulette(name):
 	global count
 	global lastshooter
@@ -180,7 +185,6 @@ if __name__ == '__main__':
 						
 				if message[:5].find('.yaja') != -1:
 					threading.Thread(target=yaja).start()
-					#sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
 					if name == lastshooter:
@@ -190,6 +194,18 @@ if __name__ == '__main__':
 						sendmsg("Please try again later.")
 					else:
 						roulette(name)
+						
+				if message.find('hotpot') != -1:
+					print (todaydate)
+					if todaydate < datetime.date.today():
+						todaypot = 0
+					hotpot += 1
+					if hotpot == 5:
+						todaypot += 5
+						hotpot = 0
+						sendmsg("Users in this channel have said hotpot {} times today.".format(todaypot))
+					else:
+						pass
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
