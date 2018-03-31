@@ -2,6 +2,7 @@
 import datetime
 import random
 import requests
+import schedule
 import socket
 import time
 import threading
@@ -11,8 +12,8 @@ from bs4 import BeautifulSoup
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "#Korean" 
-botnick = "Botivator"
+channel = "##motitest" 
+botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
@@ -31,7 +32,7 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
-	
+
 def roulette(name):
 	global count
 	global lastshooter
@@ -181,7 +182,6 @@ if __name__ == '__main__':
 						
 				if message[:5].find('.yaja') != -1:
 					threading.Thread(target=yaja).start()
-					#sendmsg("야자 타임 will be added in the near future.")
 					
 				if message[:9].find('.roulette') != -1:
 					if name == lastshooter:
