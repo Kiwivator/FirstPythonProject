@@ -22,6 +22,7 @@ lastshooter = "None"
 oldtime = time.time()
 hotpot = 0
 todaypot = 0
+todaydate = datetime.today().date()
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -195,9 +196,11 @@ if __name__ == '__main__':
 						roulette(name)
 						
 				if message.find('hotpot') != -1:
+					if todaydate.date() < datetime.today().date():
+						todaypot = 0
 					hotpot += 1
-					if hotpot == 10:
-						todaypot += 10
+					if hotpot == 5:
+						todaypot += 5
 						hotpot = 0
 						sendmsg("Users in this channel have said hotpot {} times.".format(todaypot))
 					else:
