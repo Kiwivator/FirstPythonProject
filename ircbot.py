@@ -198,7 +198,7 @@ if __name__ == '__main__':
 				if message.find('hotpot') != -1:
 					now = datetime.datetime.now()
 					print (now.year)
-					print todaydate
+					print (todaydate)
 					#print (str(todaydate)
 					#if todaydate < datetime.today():
 					#	todaypot = 0
