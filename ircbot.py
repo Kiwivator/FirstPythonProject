@@ -203,7 +203,7 @@ if __name__ == '__main__':
 					if hotpot == 5:
 						todaypot += 5
 						hotpot = 0
-						sendmsg("Users in this channel have said hotpot {} times.".format(todaypot))
+						sendmsg("Users in this channel have said hotpot {} times today.".format(todaypot))
 					else:
 						pass
 					
