@@ -196,9 +196,11 @@ if __name__ == '__main__':
 						roulette(name)
 						
 				if message.find('hotpot') != -1:
-					print (str(todaydate)
-					if todaydate < datetime.today():
-						todaypot = 0
+					now = datetime.datetime.now()
+					print (now.year)
+					#print (str(todaydate)
+					#if todaydate < datetime.today():
+					#	todaypot = 0
 					hotpot += 1
 					if hotpot == 5:
 						todaypot += 5
