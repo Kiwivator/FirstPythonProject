@@ -22,7 +22,7 @@ lastshooter = "None"
 oldtime = time.time()
 hotpot = 0
 todaypot = 0
-todaydate = datetime.today()
+todaydate = date.today()
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -198,6 +198,7 @@ if __name__ == '__main__':
 				if message.find('hotpot') != -1:
 					now = datetime.datetime.now()
 					print (now.year)
+					print todaydate
 					#print (str(todaydate)
 					#if todaydate < datetime.today():
 					#	todaypot = 0
