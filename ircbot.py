@@ -21,6 +21,7 @@ count = 6
 lastshooter = "None"
 oldtime = time.time()
 hotpot = 0
+todaypot = 0
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
