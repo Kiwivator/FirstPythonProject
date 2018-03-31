@@ -191,6 +191,9 @@ if __name__ == '__main__':
 						sendmsg("Please try again later.")
 					else:
 						roulette(name)
+						
+				if message.find('takeshima') != -1:
+					sendmsg("독도 우리땅!")
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
