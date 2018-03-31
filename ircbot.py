@@ -20,6 +20,7 @@ host = "user/Motivator"
 count = 6
 lastshooter = "None"
 oldtime = time.time()
+hotpot = 0
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -193,7 +194,13 @@ if __name__ == '__main__':
 						roulette(name)
 						
 				if message.find('hotpot') != -1:
-					sendmsg("HOTPOT")
+					hotpot += 1
+					if hotpot == 10:
+						todaypot += 10
+						hotpot = 0
+						sendmsg("Users in this channel have said hotpot ") + str(todaypot) + " times."
+					else:
+						pass
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
