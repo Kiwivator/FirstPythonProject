@@ -12,6 +12,7 @@ botnick = "VocabBot"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
+lastmessage = "No previous messages."
 
 def joinchan(chan):
 	ircsock.send(bytes("JOIN "+ chan +"\n", "UTF-8"))
@@ -47,12 +48,15 @@ if __name__ == '__main__':
 		joinchan(channel) #needs a second join command to connect to channel successfully
 		
 		if msgcodet == "PRIVMSG": 
+			print lastmessage
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			namehost = ircmsg.split('@',1)[1].split(' ',1)[0]
 			message = ircmsg.split('PRIVMSG',1)[1].split(':',1)[1]
+			message = lastmessage
 			source = ircmsg.split('PRIVMSG ',1)[1].split(':',1)[0]
 			print (source)
 			print (namehost)
+			print ("The last message was: " + lastmessage)
 			
 			if len(name) < 22: #username limit
 				ircmsg = ircmsg.lower()
