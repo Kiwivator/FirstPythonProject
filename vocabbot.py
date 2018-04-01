@@ -12,6 +12,7 @@ botnick = "VocabBot"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
+global lastmessage
 lastmessage = "No previous messages."
 
 def joinchan(chan):
@@ -48,7 +49,6 @@ if __name__ == '__main__':
 		joinchan(channel) #needs a second join command to connect to channel successfully
 		
 		if msgcodet == "PRIVMSG": 
-			global lastmessage
 			print (lastmessage)
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			namehost = ircmsg.split('@',1)[1].split(' ',1)[0]
