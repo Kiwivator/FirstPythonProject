@@ -48,6 +48,7 @@ if __name__ == '__main__':
 		joinchan(channel) #needs a second join command to connect to channel successfully
 		
 		if msgcodet == "PRIVMSG": 
+			global lastmessage
 			print (lastmessage)
 			name = ircmsg.split('!',1)[0][1:] #splitting out the name from msgcodet
 			namehost = ircmsg.split('@',1)[1].split(' ',1)[0]
@@ -75,4 +76,4 @@ if __name__ == '__main__':
 					ircsock.close() #broken?
 		elif msgcode == "PING":
 			ircsock.send(bytes("PONG " + ircmsg.split()[1] + "\r\n", "UTF-8")) #sending back a pong including custom ping code
-print("Sent PONG " + ircmsg.split()[1])
+			print("Sent PONG " + ircmsg.split()[1])
