@@ -1,5 +1,6 @@
 #!/usr/binn/python3
 import datetime
+import json
 import random
 import requests
 import schedule
@@ -41,9 +42,10 @@ def aqi():
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
-	print(response['aqius'])
 	sendmsg(response.text)
-
+	aqiapi = json.loads(response.data.decode('UTF-8'))
+	print(aqiapi)
+	
 def roulette(name):
 	global count
 	global lastshooter
