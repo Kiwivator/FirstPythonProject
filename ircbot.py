@@ -35,6 +35,13 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
+	
+def aqi():
+	url = "http://api.airvisual.com/v2/city"
+	querystring = {"city":"Los%20Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
+	response = requests.request("GET", url, params=querystring)
+	print(response.text)
+	sendmsg(response.text)
 
 def roulette(name):
 	global count
@@ -206,6 +213,9 @@ if __name__ == '__main__':
 						sendmsg("Users in this channel have said hotpot {} times today.".format(todaypot))
 					else:
 						pass
+					
+				if message[:5].find('.aqi') != -1:
+					aqi()
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
