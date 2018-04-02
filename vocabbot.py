@@ -27,13 +27,6 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def aqi():
-	url = "http://api.airvisual.com/v2/city"
-	querystring = {"city":"Los%20Angeles","state":"California","country":"USA","key":"{{RwZdE7PnXSmPP5ALC}}"}
-	response = requests.request("GET", url, params=querystring)
-	print(response.text)
-	sendmsg(response.text)
-	
 if __name__ == '__main__':
 	ircsock.connect((server, 6667))
 	ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "\n", "UTF-8"))
@@ -76,9 +69,6 @@ if __name__ == '__main__':
 				
 				if source == botnick:
 					sendmsg(message, adminname)
-					
-				if message[:5].find('.aqi') != -1:
-					aqi()
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
