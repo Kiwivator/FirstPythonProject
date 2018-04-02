@@ -41,6 +41,7 @@ def aqi():
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
+	print(response['aqius'])
 	sendmsg(response.text)
 
 def roulette(name):
