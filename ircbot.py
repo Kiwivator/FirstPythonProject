@@ -43,7 +43,7 @@ def aqi():
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
 	sendmsg(response.text)
-	aqiapi = json.loads(response.data.decode('UTF-8'))
+	aqiapi = json.loads(response.decode('UTF-8'))
 	print(aqiapi)
 	
 def roulette(name):
