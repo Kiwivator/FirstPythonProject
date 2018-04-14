@@ -45,7 +45,7 @@ def aqi():
 	sendmsg(response.text)
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	print(aqiapi)
-	sendmsg(str(response.headers))
+	sendmsg(str(aqiaqi["aqius"]))
 	
 def roulette(name):
 	global count
