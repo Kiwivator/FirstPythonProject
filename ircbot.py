@@ -43,8 +43,8 @@ def aqi():
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
 	sendmsg(response.text)
-	data = response.json()
-	sendmsg(str(data["aqius"]))
+	#data = response.json()
+	#sendmsg(str(data["aqius"]))
 	#aqiapi = json.loads(response.content.decode('UTF-8'))
 	#print(aqiapi)
 	
