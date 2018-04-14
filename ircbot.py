@@ -45,7 +45,7 @@ def aqi():
 	print(response.text)
 	sendmsg(response.text)
 	#data = response.json()
-	print(aqidata["aqius"])
+	print(aqidata)
 	#aqiapi = json.loads(response.content.decode('UTF-8'))
 	#print(aqiapi)
 	
