@@ -41,10 +41,11 @@ def aqi():
 	url = "http://api.airvisual.com/v2/city"
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
+	aqidata = json.loads(response)
 	print(response.text)
 	sendmsg(response.text)
 	#data = response.json()
-	#sendmsg(str(data["aqius"]))
+	sendmsg(str(aqidata["aqius"]))
 	#aqiapi = json.loads(response.content.decode('UTF-8'))
 	#print(aqiapi)
 	
