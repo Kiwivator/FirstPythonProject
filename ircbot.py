@@ -40,10 +40,10 @@ def sendmsg(msg, target=channel):
 def aqi():
 	url = "http://api.airvisual.com/v2/city"
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
-	response = requests.request("GET", url, params=querystring)
-	aqidata = json.loads(response)
-	print(response.text)
-	sendmsg(response.text)
+	response_data = requests.request("GET", url, params=querystring)
+	aqidata = json.loads(response_data)
+	print(response_data.text)
+	sendmsg(response_data.text)
 	#data = response.json()
 	print(aqidata)
 	#aqiapi = json.loads(response.content.decode('UTF-8'))
