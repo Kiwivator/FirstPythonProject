@@ -47,7 +47,7 @@ def aqi():
 	sendmsg("New dictionary = " + str(aqiapi))
 	try:
 		sendmsg("Current AQI = " + str(aqiapi["aqius"]))
-	else:
+	except:
 		sendmsg("OOPSIE WOOPSIE!! Uwu We made a fucky wucky!!")
 	
 def roulette(name):
