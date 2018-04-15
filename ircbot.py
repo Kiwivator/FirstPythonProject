@@ -46,7 +46,7 @@ def aqi():
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi))
 	try:
-		sendmsg("Current AQI = " + str(aqiapi["aqius"]))
+		sendmsg("Current AQI = " + str(response["aqius"]))
 	except:
 		sendmsg("OOPSIE WOOPSIE!! Uwu We made a fucky wucky!!")
 	
