@@ -41,11 +41,14 @@ def aqi():
 	url = "http://api.airvisual.com/v2/city"
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
-	
 	print(response.text)
 	sendmsg("Raw data = " + response.text)
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi))
+	try:
+		sendmsg("Current AQI = " + str(aqiapi["aqius"]))
+	else:
+		sendmsg("OOPSIE WOOPSIE!! Uwu We made a fucky wucky!!")
 	
 def roulette(name):
 	global count
