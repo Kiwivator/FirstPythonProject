@@ -45,7 +45,7 @@ def aqi():
 	print(response.text)
 	sendmsg("Ray data = " + response.text)
 	aqiapi = json.loads(response.content.decode('UTF-8'))
-	sendmsg("New dictionary = " + aqiapi)
+	sendmsg("New dictionary = " + aqiapi.text)
 	
 def roulette(name):
 	global count
