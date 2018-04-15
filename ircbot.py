@@ -7,6 +7,7 @@ import schedule
 import socket
 import time
 import threading
+import traceback
 #import temp
 from bs4 import BeautifulSoup
 
@@ -47,8 +48,8 @@ def aqi():
 	sendmsg("New dictionary = " + str(aqiapi))
 	try:
 		sendmsg("Current AQI = " + str(response["aqius"]))
-	except:
-		sendmsg("OOPSIE WOOPSIE!! Uwu We made a fucky wucky!!")
+	except Exception as e:
+		sendmsg(traceback.format_exc(e))
 	
 def roulette(name):
 	global count
