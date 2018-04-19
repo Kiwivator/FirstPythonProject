@@ -47,7 +47,7 @@ def aqi():
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	try:
-		sendmsg("Current AQI = " + aqiapi["aqius"])
+		sendmsg("Current AQI = " + aqiapi['aqius'])
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
