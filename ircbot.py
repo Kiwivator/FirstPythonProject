@@ -43,11 +43,11 @@ def aqi():
 	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
-	sendmsg("Raw data = " + response.text)
+	sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
 	aqiapi = json.loads(response.content.decode('UTF-8'))
-	sendmsg("New dictionary = " + str(aqiapi))
+	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	try:
-		sendmsg("Current AQI = " + str(response["aqius"]))
+		sendmsg("Current AQI = " + str(aqiapi["aqius"]))
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
