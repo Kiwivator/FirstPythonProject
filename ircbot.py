@@ -38,9 +38,9 @@ def joinchan(chan):
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
 	
-def aqi():
+def aqi(aqicity):
 	url = "http://api.airvisual.com/v2/city"
-	querystring = {"city":"Los Angeles","state":"California","country":"USA","key":"RwZdE7PnXSmPP5ALC"}
+	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
 	sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
