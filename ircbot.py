@@ -49,7 +49,7 @@ def aqi():
 	try:
 		sendmsg("Current AQI = " + str(response["aqius"]))
 	except Exception as e:
-		sendmsg(traceback.format_exc(e))
+		sendmsg(traceback.format_exc())
 	
 def roulette(name):
 	global count
