@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "##motitest" 
+channel = "#Korean" 
 botnick = "Botivatortest"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
@@ -47,7 +47,7 @@ def aqi():
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	try:
-		sendmsg("Current AQI = " + aqiapi['aqius'])
+		sendmsg("Current AQI = " + aqiapi['data']['current']['pollution']['aqius'])
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
