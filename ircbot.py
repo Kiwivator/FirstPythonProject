@@ -50,7 +50,7 @@ def aqi():
 	#ircmsg.split('@',1)[1].split(' ',1)[0]
 	
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius'])) + ". Reading taken at " + updatetime
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime)
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
