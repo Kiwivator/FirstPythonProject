@@ -1,11 +1,13 @@
 #!/usr/binn/python3
 import datetime
+import json
 import random
 import requests
 import schedule
 import socket
 import time
 import threading
+import traceback
 #import temp
 from bs4 import BeautifulSoup
 
@@ -35,7 +37,26 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
-
+	
+def aqi():
+	url = "http://api.airvisual.com/v2/city"
+	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
+	response = requests.request("GET", url, params=querystring)
+	print(response.text)
+	#sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
+	aqiapi = json.loads(response.content.decode('UTF-8'))
+	#sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
+	updatetime = aqiapi['data']['current']['pollution']['ts']
+	tp = aqiapi['data']['current']['weather']['tp']
+	#strptime = datetime.strptime
+	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
+	#print (str(utctime))
+	try:
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature is " + str(tp) + "°C.")
+	except Exception as e:
+		sendmsg("You fucked up " + name + ". Try again.")
+		print(traceback.format_exc())
+	
 def roulette(name):
 	global count
 	global lastshooter
@@ -207,6 +228,9 @@ if __name__ == '__main__':
 						sendmsg("Users in this channel have said hotpot {} times today.".format(todaypot))
 					else:
 						pass
+					
+				if message[:5].find('.aqi') != -1:
+					aqi()
 					
 				if host == namehost and message.strip() == "bye " + botnick:
 					sendmsg("As you wish. :'(")
