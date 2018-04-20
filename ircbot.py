@@ -47,11 +47,12 @@ def aqi():
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	updatetime = aqiapi['data']['current']['pollution']['ts']
+	tp = aqiapi['data']['current']['weather']['tp']
 	#strptime = datetime.strptime
 	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
 	#print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime)
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature in Seoul is " + str(tp))
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
