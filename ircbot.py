@@ -46,8 +46,11 @@ def aqi():
 	sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
+	updatetime = aqiapi['data']['current']['pollution']['ts']
+	#ircmsg.split('@',1)[1].split(' ',1)[0]
+	
 	try:
-		sendmsg("Current AQI = " + str(aqiapi['data']['current']['pollution']['aqius']))
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius'])) + ". Reading taken at " + updatetime
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
