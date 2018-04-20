@@ -40,7 +40,7 @@ def sendmsg(msg, target=channel):
 	
 def aqi():
 	url = "http://api.airvisual.com/v2/city"
-	querystring = {"city":"Seoul","state":"Seoul","country":"South%20Korea","key":"RwZdE7PnXSmPP5ALC"}
+	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
 	sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
