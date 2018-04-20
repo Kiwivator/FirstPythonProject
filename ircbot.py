@@ -47,7 +47,8 @@ def aqi():
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	updatetime = aqiapi['data']['current']['pollution']['ts']
-	utctime = datetime.datetime.strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
+	strptime = datetime.datetime.strptime
+	utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
 	print (utctime(time))
 	try:
 		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime)
