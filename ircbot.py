@@ -48,7 +48,7 @@ def aqi():
 	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	utctime = datetime.datetime.strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
-	print utctime(time)	
+	print (utctime(time))
 	try:
 		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime)
 	except Exception as e:
