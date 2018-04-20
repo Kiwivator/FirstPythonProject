@@ -52,7 +52,7 @@ def aqi():
 	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
 	#print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature in Seoul is " + str(tp))
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature in Seoul is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
