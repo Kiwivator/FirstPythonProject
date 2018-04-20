@@ -43,16 +43,16 @@ def aqi():
 	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
 	print(response.text)
-	sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
+	#sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
 	aqiapi = json.loads(response.content.decode('UTF-8'))
-	sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
+	#sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	tp = aqiapi['data']['current']['weather']['tp']
 	#strptime = datetime.strptime
 	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
 	#print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature in Seoul is " + str(tp) + "°C.")
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
