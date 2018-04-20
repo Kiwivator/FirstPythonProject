@@ -49,7 +49,7 @@ def aqi():
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	strptime = datetime.datetime.strptime
 	utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
-	print (utctime(time))
+	print (str(utctime))
 	try:
 		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime)
 	except Exception as e:
