@@ -54,7 +54,7 @@ def aqi():
 	utctime = parse_json_date(updatetime)
 	print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + utctime + "UTC. The temperature is " + str(tp) + "°C.")
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(utctime) + "UTC. The temperature is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
