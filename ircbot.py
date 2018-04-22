@@ -51,8 +51,7 @@ def aqi():
 	#sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
 	tp = aqiapi['data']['current']['weather']['tp']
 	updatetime = aqiapi['data']['current']['pollution']['ts']
-	parse_json_date(updatetime)
-	strptime = datetime.datetime.strptime
+	utctime = parse_json_date(updatetime)
 	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
 	print (str(utctime))
 	try:
