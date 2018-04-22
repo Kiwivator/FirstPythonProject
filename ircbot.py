@@ -37,6 +37,9 @@ def joinchan(chan):
 
 def sendmsg(msg, target=channel):
 	ircsock.send(bytes("PRIVMSG "+ target +" :"+ msg +"\n", "UTF-8"))
+
+def parse_json_date(string):
+	return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
 	
 def aqi():
 	url = "http://api.airvisual.com/v2/city"
@@ -46,11 +49,12 @@ def aqi():
 	#sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
 	aqiapi = json.loads(response.content.decode('UTF-8'))
 	#sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
-	updatetime = aqiapi['data']['current']['pollution']['ts']
 	tp = aqiapi['data']['current']['weather']['tp']
-	#strptime = datetime.strptime
+	updatetime = aqiapi['data']['current']['pollution']['ts']
+	parse_json_date(updatetime)
+	strptime = datetime.datetime.strptime
 	#utctime = strptime(updatetime, '%Y-%m-%dT%H:%M:%S.%fZ')
-	#print (str(utctime))
+	print (str(utctime))
 	try:
 		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + updatetime + ". The temperature is " + str(tp) + "°C.")
 	except Exception as e:
