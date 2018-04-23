@@ -54,7 +54,7 @@ def aqi():
 	tp = aqiapi['data']['current']['weather']['tp']
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	utctime = parse_json_date(updatetime)
-	korea_time = utctime.astimezone(timezone('Seoul/Asia'))
+	korea_time = utctime.astimezone(timezone('Asia/Seoul'))
 	print (str(utctime))
 	try:
 		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(korea_time) + "UTC. The temperature is " + str(tp) + "°C.")
