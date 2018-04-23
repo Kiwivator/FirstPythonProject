@@ -1,6 +1,7 @@
 #!/usr/binn/python3
 import datetime
 import json
+import pytz
 import random
 import requests
 import schedule
@@ -52,9 +53,10 @@ def aqi():
 	tp = aqiapi['data']['current']['weather']['tp']
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	utctime = parse_json_date(updatetime)
+	korea_time = utctime.astimezone(timezone('Seoul/Asia'))
 	print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(utctime) + "UTC. The temperature is " + str(tp) + "°C.")
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(korea_time) + "UTC. The temperature is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
