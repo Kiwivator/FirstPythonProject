@@ -1,6 +1,7 @@
 #!/usr/binn/python3
 import datetime
 import json
+import pytz
 import random
 import requests
 import schedule
@@ -42,6 +43,7 @@ def parse_json_date(string):
 	return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
 	
 def aqi():
+	from pytz import timezone
 	url = "http://api.airvisual.com/v2/city"
 	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
@@ -52,9 +54,11 @@ def aqi():
 	tp = aqiapi['data']['current']['weather']['tp']
 	updatetime = aqiapi['data']['current']['pollution']['ts']
 	utctime = parse_json_date(updatetime)
+	korea_time = utctime.astimezone(timezone('Asia/Seoul'))
+	korea_time = korea_time.strftime("%H:%M")
 	print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(utctime) + "UTC. The temperature is " + str(tp) + "°C.")
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(korea_time) + ". The temperature is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
