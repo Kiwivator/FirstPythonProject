@@ -57,7 +57,7 @@ def aqi():
 	korea_time = utctime.astimezone(timezone('Asia/Seoul'))
 	print (str(utctime))
 	try:
-		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(korea_time) + "UTC. The temperature is " + str(tp) + "°C.")
+		sendmsg("Seoul's current AQI is " + str(aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(korea_time) + ". The temperature is " + str(tp) + "°C.")
 	except Exception as e:
 		sendmsg("You fucked up " + name + ". Try again.")
 		print(traceback.format_exc())
