@@ -1,7 +1,7 @@
 #!/usr/binn/python3
 import datetime
 import json
-import timezone from pytz
+import pytz
 import random
 import requests
 import schedule
@@ -43,6 +43,7 @@ def parse_json_date(string):
 	return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
 	
 def aqi():
+	from pytz import timezone
 	url = "http://api.airvisual.com/v2/city"
 	querystring = {"city":"Seoul","state":"Seoul","country":"South Korea","key":"RwZdE7PnXSmPP5ALC"}
 	response = requests.request("GET", url, params=querystring)
