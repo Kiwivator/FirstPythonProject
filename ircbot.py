@@ -1,7 +1,7 @@
 #!/usr/binn/python3
 import datetime
 import json
-import pytz
+import timezone from pytz
 import random
 import requests
 import schedule
