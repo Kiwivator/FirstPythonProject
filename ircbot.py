@@ -213,7 +213,7 @@ if __name__ == '__main__':
 				if message[:5].find('.yaja') != -1:
 					threading.Thread(target=yaja).start()
 					
-				if message[:5].find('.radar') != -1:	
+				if message[:6].find('.radar') != -1:	
 					sendmsg("http://www.weather.go.kr/weather/images/rader_integrate.jsp")
 					
 				if message[:9].find('.roulette') != -1:
