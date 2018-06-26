@@ -216,6 +216,9 @@ if __name__ == '__main__':
 				if message[:6].find('.radar') != -1:	
 					sendmsg("http://www.weather.go.kr/weather/images/rader_integrate.jsp")
 					
+				if message[:5].find('noice') != -1:	
+					sendmsg("Noice!")
+					
 				if message[:9].find('.roulette') != -1:
 					if name == lastshooter:
 						sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
