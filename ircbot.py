@@ -244,6 +244,11 @@ if __name__ == '__main__':
 					else:
 						pass
 					
+				if message.find('fuck me') != -1:
+					message = ".dicecho lenny"
+					target = "acosbot"
+					sendmsg(message, target)
+				
 				if message[:5].find('.aqi') != -1:
 					aqi()
 					
