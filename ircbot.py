@@ -245,9 +245,7 @@ if __name__ == '__main__':
 						pass
 					
 				if message.find('fuck me') != -1:
-					message = ".dicecho lenny"
-					target = "acosbot"
-					sendmsg(message, target)
+					sendmsg(".dicecho lenny", "acosbot")
 				
 				if message[:5].find('.aqi') != -1:
 					aqi()
