@@ -26,7 +26,7 @@ oldtime = time.time()
 hotpot = 0
 todaypot = 0
 olddate = datetime.date.today()
-
+token = "4c65389e2ada51cbbc193f29fce77c8837ffe00c"
 
 def joinchan(chan):
     ircsock.send(bytes("JOIN " + chan + "\n", "UTF-8"))
@@ -46,30 +46,54 @@ def sendmsg(msg, target=channel):
 def parse_json_date(string):
     return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
 
-
-def aqi():
-    from pytz import timezone
-    url = "http://api.airvisual.com/v2/city"
-    querystring = {"city": "Seoul", "state": "Seoul", "country": "South Korea", "key": "RwZdE7PnXSmPP5ALC"}
-    response = requests.request("GET", url, params=querystring)
-    print(response.text)
-    # sendmsg("Raw data = " + response.text) #JUST A DEBUG MSG
-    aqiapi = json.loads(response.content.decode('UTF-8'))
-    # sendmsg("New dictionary = " + str(aqiapi)) #JUST A DEBUG MSG
-    tp = aqiapi['data']['current']['weather']['tp']
-    updatetime = aqiapi['data']['current']['pollution']['ts']
-    utctime = parse_json_date(updatetime)
-    korea_time = utctime.astimezone(timezone('Asia/Seoul'))
-    korea_time = korea_time.strftime("%H:%M")
-    print(str(utctime))
+def aqisearch(keyword):
+    # searches for location using keyword and returns the stationID
+    url = "https://api.waqi.info/search/?keyword="
+    searchresult = requests.request("GET", url + keyword + "&token=" + token)
+    print(searchresult.text)
+    searchlist = json.loads(searchresult.content.decode('UTF-8'))
     try:
-        sendmsg("Seoul's current AQI is " + str(
-            aqiapi['data']['current']['pollution']['aqius']) + ". Reading taken at " + str(
-            korea_time) + ". The temperature is " + str(tp) + "°C.")
-    except Exception as e:
-        sendmsg("You fucked up " + name + ". Try again.")
-        print(traceback.format_exc())
+        keyword = searchlist['data'][0]['uid']
+        return keyword
+    except:
+        sendmsg("Location not found. Please try entering another area.")
+        keyword = "NOTFOUND"
+        return keyword
 
+def aqi(keyword):
+    #first tries to search for overall city data matching the keyword
+    url = "https://api.waqi.info/feed/"
+    response = requests.request("GET", url + keyword + "/?token=" + token)
+    print(response.text)
+    aqiapi = json.loads(response.content.decode('UTF-8'))
+
+    status = aqiapi['status']
+    if status != 'ok':
+        #if no result then make a search query
+        station = aqisearch(keyword)
+        try:
+            url = "https://api.waqi.info/feed/"
+            response2 = requests.request("GET", url + "@" + str(station) + "/?token=" + token)
+            #using the stationID to get detailed data - @ must come before stationID
+            print(response2.text)
+            aqiapi = json.loads(response2.content.decode('UTF-8'))
+            #load new data into aqiapi
+        except:
+                print("Error1")
+
+    else:
+        pass
+
+    #Continue parsing data from city/station feed
+    try:
+        CurrentAQI = aqiapi['data']['aqi']
+        location = aqiapi['data']['city']['name']
+        readingtime = aqiapi['data']['time']['s']
+        mainpol = aqiapi['data']['dominentpol']
+        mainlevel = aqiapi['data']['iaqi'][mainpol]['v']
+        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + ". The main pollutant is " + mainpol + "(" + str(mainlevel) + "µg). Reading taken at " + readingtime + " local time.")
+    except:
+        print("Error2")
 
 def roulette(name):
     global count
