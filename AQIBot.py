@@ -74,7 +74,6 @@ def aqi(keyword):
     except:
         print("Error2")
 
-
 if __name__ == '__main__':
     ircsock.connect((server, 6667))
     ircsock.send(bytes("USER " + botnick + " " + botnick + " " + botnick + " " + botnick + "\n", "UTF-8"))
