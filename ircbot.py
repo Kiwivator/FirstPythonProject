@@ -29,6 +29,7 @@ olddate = datetime.date.today()
 token = "4c65389e2ada51cbbc193f29fce77c8837ffe00c"
 inf = float("inf")
 levels = [("good", 50), ("moderate", 100), ("unhealthy for sensitive groups", 151), ("unhealthy", 201), ("very unhealthy", 300), ("hazardous", 999), ("death", inf)];
+pollutants = [("pm25", "PM2.5"), ("pm10", "PM10"), ("o3", "O3"), ("no2", "NO2")]
 
 def joinchan(chan):
     ircsock.send(bytes("JOIN " + chan + "\n", "UTF-8"))
@@ -53,6 +54,13 @@ def airrating(CurrentAQI):
         if CurrentAQI <= b:
             print(a)
             return a
+
+def polformat(mainpol):
+    for a, b in pollutants:
+        if mainpol == a:
+            print(b)
+            return b
+
 
 def aqisearch(keyword):
     # searches for location using keyword and returns the stationID
@@ -98,10 +106,9 @@ def aqi(keyword):
         location = aqiapi['data']['city']['name']
         readingtime = aqiapi['data']['time']['s']
         mainpol = aqiapi['data']['dominentpol']
-        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + " and the air rating is " + airrating(CurrentAQI) + ". The main pollutant is " + mainpol + ". Reading taken at " + readingtime + " local time.")
+        sendmsg("The air quality in " + location + " is " + airrating(CurrentAQI) + ". AQI: " + str(CurrentAQI) + " | Main pollutant: " + polformat(mainpol) + " | Reading taken: " + readingtime + " (local time)")
     except Exception as e:
-        sendmsg("You fucked up " + name + ". Try again.")
-        print(traceback.format_exc())
+        pass
 
 def roulette(name):
     global count
