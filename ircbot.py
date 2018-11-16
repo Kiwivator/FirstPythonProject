@@ -28,7 +28,7 @@ todaypot = 0
 olddate = datetime.date.today()
 token = "4c65389e2ada51cbbc193f29fce77c8837ffe00c"
 inf = float("inf")
-levels = [("good", 50), ("moderate", 100), ("unhealthy for sensitive groups", 151), ("unhealthy", 201), ("very unhealthy", 300), ("hazardous", 999), ("death", inf)];
+levels = [("Good", 50), ("Moderate", 100), ("Unhealthy for sensitive groups", 151), ("Unhealthy", 201), ("Very unhealthy", 300), ("Hazardous", 998), ("DEATH", inf)];
 pollutants = [("pm25", "PM2.5"), ("pm10", "PM10"), ("o3", "O3"), ("no2", "NO2")]
 
 def joinchan(chan):
@@ -106,7 +106,7 @@ def aqi(keyword):
         location = aqiapi['data']['city']['name']
         readingtime = aqiapi['data']['time']['s']
         mainpol = aqiapi['data']['dominentpol']
-        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + ". The main pollutant is " + mainpol + "(" + str(mainlevel) + "µg). Reading taken at " + readingtime + " local time.")
+        sendmsg("[" + location + "]  " + "AQI: " + str(CurrentAQI) + " | Air Quality Rating: " + airrating(CurrentAQI) + " | Main pollutant: " + polformat(mainpol) + " | Reading taken: " + readingtime + " (local time)")
     except Exception as e:
         pass
 
