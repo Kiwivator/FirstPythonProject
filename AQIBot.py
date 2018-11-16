@@ -71,8 +71,8 @@ def aqi(keyword):
         mainpol = aqiapi['data']['dominentpol']
         mainlevel = aqiapi['data']['iaqi'][mainpol]['v']
         sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + ". The main pollutant is " + mainpol + "(" + str(mainlevel) + "µg). Reading taken at " + readingtime + " local time.")
-    except:
-        print("Error2")
+            except:
+            print("Error2")
 
 if __name__ == '__main__':
     ircsock.connect((server, 6667))
