@@ -27,6 +27,8 @@ hotpot = 0
 todaypot = 0
 olddate = datetime.date.today()
 token = "4c65389e2ada51cbbc193f29fce77c8837ffe00c"
+inf = float("inf")
+levels = [("good", 50), ("moderate", 100), ("unhealthy for sensitive groups", 151), ("unhealthy", 201), ("very unhealthy", 300), ("hazardous", 999), ("death", inf)];
 
 def joinchan(chan):
     ircsock.send(bytes("JOIN " + chan + "\n", "UTF-8"))
@@ -45,6 +47,12 @@ def sendmsg(msg, target=channel):
 
 def parse_json_date(string):
     return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+def airrating(CurrentAQI):
+    for a, b in levels:
+        if CurrentAQI <= b:
+            print(a)
+            return a
 
 def aqisearch(keyword):
     # searches for location using keyword and returns the stationID
@@ -90,10 +98,10 @@ def aqi(keyword):
         location = aqiapi['data']['city']['name']
         readingtime = aqiapi['data']['time']['s']
         mainpol = aqiapi['data']['dominentpol']
-        mainlevel = aqiapi['data']['iaqi'][mainpol]['v']
-        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + ". The main pollutant is " + mainpol + "(" + str(mainlevel) + "µg). Reading taken at " + readingtime + " local time.")
-    except:
-        print("Error2")
+        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + " and the air rating is " + airrating(CurrentAQI) + ". The main pollutant is " + mainpol + ". Reading taken at " + readingtime + " local time.")
+    except Exception as e:
+        sendmsg("You fucked up " + name + ". Try again.")
+        print(traceback.format_exc())
 
 def roulette(name):
     global count
