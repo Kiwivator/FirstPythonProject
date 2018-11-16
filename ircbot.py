@@ -106,7 +106,7 @@ def aqi(keyword):
         location = aqiapi['data']['city']['name']
         readingtime = aqiapi['data']['time']['s']
         mainpol = aqiapi['data']['dominentpol']
-    	sendmsg("[" + location + "]  " + "AQI: " + str(CurrentAQI) + " Air Quality Rating:" + airrating(CurrentAQI) + " | Main pollutant: " + polformat(mainpol) + " | Reading taken: " + readingtime + " (local time)")
+        sendmsg("The AQI of " + location + " is " + str(CurrentAQI) + ". The main pollutant is " + mainpol + "(" + str(mainlevel) + "µg). Reading taken at " + readingtime + " local time.")
     except Exception as e:
         pass
 
