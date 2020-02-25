@@ -109,22 +109,6 @@ def aqi(keyword):
         sendmsg("[" + location + "]  " + "AQI: " + str(CurrentAQI) + " | Air Quality Rating: " + airrating(CurrentAQI) + " | Main pollutant: " + polformat(mainpol) + " | Reading taken: " + readingtime + " (local time)")
     except Exception as e:
         pass
-
-def fact():
-    url = 'https://api.twitter.com/1.1/account/verify_credentials.json'
-    auth = OAuth1('4PuxEqgLV0fm3b5lbjAKqe0A9', 'usLsmNzMtHsbQwSsssOGPB3exA7BWOdjCZvwNzR1ShKKBhDqGY', '14918230-TF1YyldCyB8EvIJZElO3ZNcBuSp3RKcF89dCFkLXF', 'bQDHxZXcce6dDrY3jFJoqa9XYT6cU0dnAhIHHcgQI9fY0')
-    requests.get(url, auth=auth)
-    url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=dailykoreanfact&count=50&exclude_replies=true&tweet_mode=extended&include_rts=false"
-    response = requests.request("GET", url, auth=auth)
-    print(response.text)
-    tweets = json.loads(response.content.decode('UTF-8'))
-    print(tweets)
-    tweetnum = random.randint(0, 20)
-    try:
-        facttext = tweets[tweetnum]['full_text']
-        sendmsg(facttext + " https://bit.ly/2LisUZB")
-    except:
-        sendmsg("No tweet here.")
     
 def roulette(name):
     global count
@@ -289,9 +273,6 @@ if __name__ == '__main__':
 
                 if message[:8].find('.typhoon') != -1:
                     sendmsg("http://goo.gl/xUa4Bh")
-
-                if message[:5].find('.fact') != -1:
-                    fact()
 
                 if message[:9].find('.roulette') != -1:
                     if name == lastshooter:
