@@ -67,8 +67,12 @@ def corona():
     infected = soup.find_all("a", class_="num")[0].get_text()
     treated = soup.find_all("a", class_="num")[1].get_text()
     deaths = soup.find_all("a", class_="num")[2].get_text()
-    sendmsg(("COVID19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Treated: ") + str(treated) + ("  (Updates are made at 10am and 5pm KST)"))
-
+    try:
+        sendmsg(("COVID19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Treated: ") + str(
+        treated) + ("  (Updates are made at 10am and 5pm KST)"))
+    except:
+        sendmsg("Error, please try again.")
+        
 def aqisearch(keyword):
     # searches for location using keyword and returns the stationID
     url = "https://api.waqi.info/search/?keyword="
