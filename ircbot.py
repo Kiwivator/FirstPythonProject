@@ -61,6 +61,13 @@ def polformat(mainpol):
             print(b)
             return b
 
+def corona():
+    page = requests.get("http://ncov.mohw.go.kr/index_main.jsp")
+    soup = BeautifulSoup(page.content, 'html.parser')
+    infected = soup.find_all("a", class_="num")[0].get_text()
+    treated = soup.find_all("a", class_="num")[1].get_text()
+    deaths = soup.find_all("a", class_="num")[2].get_text()
+    sendmsg(("COVID19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Treated: ") + str(treated) + ("  (Updates are made at 10am and 5pm KST)"))
 
 def aqisearch(keyword):
     # searches for location using keyword and returns the stationID
@@ -273,6 +280,9 @@ if __name__ == '__main__':
 
                 if message[:8].find('.typhoon') != -1:
                     sendmsg("http://goo.gl/xUa4Bh")
+                    
+                if message[:7].find('.corona') != -1:
+                    corona()
 
                 if message[:9].find('.roulette') != -1:
                     if name == lastshooter:
