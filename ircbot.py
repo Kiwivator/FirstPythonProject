@@ -15,8 +15,8 @@ from bs4 import BeautifulSoup
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "#Korean"
-botnick = "Botivator"
+channel = "##motitest"
+botnick = "Coronabot"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
 host = "user/Motivator"
@@ -28,8 +28,10 @@ todaypot = 0
 olddate = datetime.date.today()
 token = "4c65389e2ada51cbbc193f29fce77c8837ffe00c"
 inf = float("inf")
-levels = [("Good", 50), ("Moderate", 100), ("Unhealthy for sensitive groups", 151), ("Unhealthy", 201), ("Very unhealthy", 300), ("Hazardous", 998), ("DEATH", inf)];
+levels = [("Good", 50), ("Moderate", 100), ("Unhealthy for sensitive groups", 151), ("Unhealthy", 201),
+          ("Very unhealthy", 300), ("Hazardous", 998), ("DEATH", inf)];
 pollutants = [("pm25", "PM2.5"), ("pm10", "PM10"), ("o3", "O3"), ("no2", "NO2")]
+
 
 def joinchan(chan):
     ircsock.send(bytes("JOIN " + chan + "\n", "UTF-8"))
@@ -49,17 +51,20 @@ def sendmsg(msg, target=channel):
 def parse_json_date(string):
     return datetime.datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
 
+
 def airrating(CurrentAQI):
     for a, b in levels:
         if CurrentAQI <= b:
             print(a)
             return a
 
+
 def polformat(mainpol):
     for a, b in pollutants:
         if mainpol == a:
             print(b)
             return b
+
 
 def corona():
     page = requests.get("http://ncov.mohw.go.kr/index_main.jsp")
@@ -69,7 +74,8 @@ def corona():
     deaths = soup.find_all("a", class_="num")[2].get_text()
     sendmsg(("COVID19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Treated: ") + str(
         treated) + ("  (Updates are made at 10am and 5pm KST)"))
-        
+
+
 def aqisearch(keyword):
     # searches for location using keyword and returns the stationID
     url = "https://api.waqi.info/search/?keyword="
@@ -84,8 +90,9 @@ def aqisearch(keyword):
         keyword = "NOTFOUND"
         return keyword
 
+
 def aqi(keyword):
-    #first tries to search for overall city data matching the keyword
+    # first tries to search for overall city data matching the keyword
     url = "https://api.waqi.info/feed/"
     response = requests.request("GET", url + keyword + "/?token=" + token)
     print(response.text)
@@ -93,31 +100,34 @@ def aqi(keyword):
 
     status = aqiapi['status']
     if status != 'ok':
-        #if no result then make a search query
+        # if no result then make a search query
         station = aqisearch(keyword)
         try:
             url = "https://api.waqi.info/feed/"
             response2 = requests.request("GET", url + "@" + str(station) + "/?token=" + token)
-            #using the stationID to get detailed data - @ must come before stationID
+            # using the stationID to get detailed data - @ must come before stationID
             print(response2.text)
             aqiapi = json.loads(response2.content.decode('UTF-8'))
-            #load new data into aqiapi
+            # load new data into aqiapi
         except:
-                print("Error1")
+            print("Error1")
 
     else:
         pass
 
-    #Continue parsing data from city/station feed
+    # Continue parsing data from city/station feed
     try:
         CurrentAQI = aqiapi['data']['aqi']
         location = aqiapi['data']['city']['name']
         readingtime = aqiapi['data']['time']['s']
         mainpol = aqiapi['data']['dominentpol']
-        sendmsg("[" + location + "]  " + "AQI: " + str(CurrentAQI) + " | Air Quality Rating: " + airrating(CurrentAQI) + " | Main pollutant: " + polformat(mainpol) + " | Reading taken: " + readingtime + " (local time)")
+        sendmsg("[" + location + "]  " + "AQI: " + str(CurrentAQI) + " | Air Quality Rating: " + airrating(
+            CurrentAQI) + " | Main pollutant: " + polformat(
+            mainpol) + " | Reading taken: " + readingtime + " (local time)")
     except Exception as e:
         pass
-    
+
+
 def roulette(name):
     global count
     global lastshooter
@@ -192,7 +202,7 @@ def yaja():
 
 
 # Change to 15 minutes (warnings at 10,5,1 min left)
-# Make OP host list to limit command use 
+# Make OP host list to limit command use
 # Make async so that bot continues to PING/PONG and recognize commands
 # Make a break/extend command?
 
@@ -281,13 +291,13 @@ if __name__ == '__main__':
 
                 if message[:8].find('.typhoon') != -1:
                     sendmsg("http://goo.gl/xUa4Bh")
-                    
+
                 if message[:7].find('.corona') != -1:
                     try:
                         corona()
                     except:
                         sendmsg("Error, please try again.")
-                    
+
                 if message[:9].find('.roulette') != -1:
                     if name == lastshooter:
                         sendmsg(name + "님이 방금 쐈습니다. 다른 유저가 먼저 쏴야 한번 더 쏠 수 있습니다.")
