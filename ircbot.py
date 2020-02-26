@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server = "irc.snoonet.org"
-channel = "##motitest"
+channel = "#Korean"
 botnick = "Coronabot"
 adminname = "MotivatorAFK"
 exitcode = "bye " + botnick
