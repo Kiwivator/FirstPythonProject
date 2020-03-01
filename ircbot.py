@@ -72,7 +72,7 @@ def corona():
     infected = soup.find_all("a", class_="num")[0].get_text()
     treated = soup.find_all("a", class_="num")[1].get_text()
     deaths = soup.find_all("a", class_="num")[2].get_text()
-    sendmsg(("COVID19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Treated: ") + str(
+    sendmsg(("COVID-19 in Korea: Infected: ") + str(infected) + (" | Deaths: ") + str(deaths) + (" | Recovered: ") + str(
         treated) + ("  (Updates are made at 10am and 5pm KST)"))
 
 
@@ -296,7 +296,7 @@ if __name__ == '__main__':
                     try:
                         corona()
                     except:
-                        sendmsg("Error, please try again.")
+                        sendmsg("Site is busy. Please try again.")
 
                 if message[:9].find('.roulette') != -1:
                     if name == lastshooter:
